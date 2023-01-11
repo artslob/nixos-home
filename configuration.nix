@@ -110,6 +110,27 @@
     g = "git";
   };
 
+  programs.git = {
+    enable = true;
+    config = {
+      core.editor = "vim";
+      init.defaultBranch = "main";
+      alias = {
+        a = "add";
+        s = "status";
+        c = "commit";
+        ca = "commit -a";
+        d = "diff";
+        dc = "diff --cached";
+        pu = "push";
+        ch = "checkout";
+        l = "log";
+        lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
+        lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+      };
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
