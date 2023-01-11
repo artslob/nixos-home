@@ -71,6 +71,13 @@
     #     thunderbird
     #   ];
   };
+  security.sudo.extraRules = [{
+    users = [ "artslob" ];
+    commands = [{
+      command = "ALL";
+      options = [ "NOPASSWD" "SETENV" ];
+    }];
+  }];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
