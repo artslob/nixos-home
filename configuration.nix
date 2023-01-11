@@ -44,11 +44,8 @@
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
+  services.xserver.layout = "us,ru";
+  services.xserver.xkbOptions = "grp:toggle,caps:ctrl_modifier";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
