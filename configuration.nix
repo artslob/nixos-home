@@ -104,6 +104,7 @@
     starship
     gparted
     networkmanagerapplet
+    libsForQt5.dolphin
   ];
 
   programs.ssh.startAgent = true;
