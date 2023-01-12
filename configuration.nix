@@ -108,6 +108,7 @@
     feh # image viewer
     nomacs # image viewer
     libsForQt5.okular # pdf viewer
+    python3
   ];
 
   programs.ssh.startAgent = true;
