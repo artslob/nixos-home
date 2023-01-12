@@ -39,9 +39,11 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the Plasma 5 Desktop Environment.
+  # i3-gaps window manager
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.desktopManager.xterm.enable = false;
+  services.xserver.windowManager.i3.enable = true;
+  services.xserver.windowManager.i3.package = pkgs.i3-gaps;
 
   # Configure keymap in X11
   services.xserver.layout = "us,ru";
