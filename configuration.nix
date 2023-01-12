@@ -91,7 +91,10 @@
     alacritty
     tdesktop
     stow
-    polybar
+    (polybar.override {
+      i3GapsSupport = true;
+      pulseSupport = true;
+    })
     i3-gaps
     i3lock
     shutter
