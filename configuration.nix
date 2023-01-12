@@ -84,6 +84,7 @@
     vim
     wget
     firefox
+    chromium
     git
     htop
     nixfmt
