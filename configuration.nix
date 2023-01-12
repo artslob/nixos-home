@@ -105,6 +105,8 @@
     gparted
     networkmanagerapplet
     libsForQt5.dolphin
+    feh # image viewer
+    nomacs # image viewer
   ];
 
   programs.ssh.startAgent = true;
