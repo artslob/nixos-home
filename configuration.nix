@@ -108,6 +108,15 @@
 
   programs.ssh.startAgent = true;
 
+  fonts.fonts = with pkgs; [
+    # terminal
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    # window manager workspace bar icons
+    font-awesome
+    # window manager workspace bar text
+    jetbrains-mono
+  ];
+
   programs.bash.shellAliases = {
     p = "pwd";
     g = "git";
