@@ -107,6 +107,7 @@
     libsForQt5.dolphin
     feh # image viewer
     nomacs # image viewer
+    libsForQt5.okular # pdf viewer
   ];
 
   programs.ssh.startAgent = true;
