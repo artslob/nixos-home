@@ -98,6 +98,7 @@
     rofi
     starship
     gparted
+    networkmanagerapplet
   ];
 
   programs.ssh.startAgent = true;
