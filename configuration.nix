@@ -115,6 +115,7 @@
     moreutils # sponge bash command
     neofetch
     docker-compose
+    libreoffice
   ];
 
   virtualisation.docker.enable = true;
