@@ -113,6 +113,7 @@
     xdotool # script for alacritty
     arandr
     moreutils # sponge bash command
+    neofetch
   ];
 
   programs.ssh.startAgent = true;
