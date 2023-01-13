@@ -112,6 +112,7 @@
     python3
     xdotool # script for alacritty
     arandr
+    moreutils # sponge bash command
   ];
 
   programs.ssh.startAgent = true;
