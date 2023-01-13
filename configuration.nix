@@ -111,6 +111,7 @@
     libsForQt5.okular # pdf viewer
     python3
     xdotool # script for alacritty
+    arandr
   ];
 
   programs.ssh.startAgent = true;
