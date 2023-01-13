@@ -62,7 +62,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.artslob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     initialHashedPassword =
       "$y$j9T$uylUKYwGtMuGI4HO0QwvW/$EP2GGktreuKC09uvUEMzfTEcqNLJHpbULU7wx8ZZy93";
     #   packages = with pkgs; [
@@ -114,7 +114,10 @@
     arandr
     moreutils # sponge bash command
     neofetch
+    docker-compose
   ];
+
+  virtualisation.docker.enable = true;
 
   programs.ssh.startAgent = true;
 
