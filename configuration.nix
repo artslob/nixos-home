@@ -117,6 +117,7 @@
     docker-compose
     libreoffice
     dunst # notifications
+    smplayer
   ];
 
   virtualisation.docker.enable = true;
