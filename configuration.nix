@@ -119,6 +119,7 @@
     dunst # notifications
     smplayer
     jetbrains.idea-community
+    vscodium
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
