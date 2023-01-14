@@ -135,6 +135,11 @@
     p = "pwd";
     g = "git";
   };
+  programs.bash.interactiveShellInit = ''
+    if command -v starship 1>/dev/null 2>&1; then
+        eval "$(starship init bash)"
+    fi
+  '';
 
   programs.git = {
     enable = true;
