@@ -120,6 +120,9 @@
     smplayer
   ];
 
+  # keyring keeps passwords, e.g. for nm-applet
+  services.gnome.gnome-keyring.enable = true;
+
   virtualisation.docker.enable = true;
 
   # i3 tips: help settings to be saved for applications (gtk3 applications, firefox),
