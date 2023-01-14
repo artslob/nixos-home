@@ -116,6 +116,7 @@
     neofetch
     docker-compose
     libreoffice
+    dunst # notifications
   ];
 
   virtualisation.docker.enable = true;
@@ -135,6 +136,7 @@
     p = "pwd";
     g = "git";
   };
+  programs.bash.undistractMe.enable = true;
   programs.bash.interactiveShellInit = ''
     if command -v starship 1>/dev/null 2>&1; then
         eval "$(starship init bash)"
