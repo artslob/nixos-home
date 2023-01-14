@@ -122,6 +122,10 @@
 
   virtualisation.docker.enable = true;
 
+  # i3 tips: help settings to be saved for applications (gtk3 applications, firefox),
+  # like the size of file selection windows, or the size of the save dialog
+  programs.dconf.enable = true;
+
   programs.ssh.startAgent = true;
 
   fonts.fonts = with pkgs; [
