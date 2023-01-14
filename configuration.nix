@@ -118,6 +118,7 @@
     libreoffice
     dunst # notifications
     smplayer
+    jetbrains.idea-community
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
