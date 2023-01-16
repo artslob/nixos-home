@@ -120,6 +120,7 @@
     smplayer
     jetbrains.idea-community
     vscodium
+    dbeaver
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
