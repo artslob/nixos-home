@@ -15,26 +15,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "artslob-laptop";
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Easiest to use and most distros use this by default.
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "Asia/Bangkok";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -49,9 +32,6 @@
   services.xserver.layout = "us,ru";
   services.xserver.xkbOptions = "grp:toggle,ctrl:nocaps";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
@@ -65,10 +45,6 @@
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     initialHashedPassword =
       "$y$j9T$uylUKYwGtMuGI4HO0QwvW/$EP2GGktreuKC09uvUEMzfTEcqNLJHpbULU7wx8ZZy93";
-    #   packages = with pkgs; [
-    #     firefox
-    #     thunderbird
-    #   ];
   };
   security.sudo.extraRules = [{
     users = [ "artslob" ];
@@ -78,8 +54,6 @@
     }];
   }];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -92,7 +66,7 @@
     openvpn
     bitwarden
     alacritty
-    tdesktop
+    tdesktop # telegram
     stow
     (polybar.override {
       i3GapsSupport = true;
@@ -177,17 +151,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
