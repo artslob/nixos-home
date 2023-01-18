@@ -47,7 +47,7 @@
 
   # Configure keymap in X11
   services.xserver.layout = "us,ru";
-  services.xserver.xkbOptions = "grp:toggle,caps:ctrl_modifier";
+  services.xserver.xkbOptions = "grp:toggle,ctrl:nocaps";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
