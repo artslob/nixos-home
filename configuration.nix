@@ -27,6 +27,14 @@
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
+      extraPackages = with pkgs; [
+        i3lock
+        rofi
+        (polybar.override {
+          i3GapsSupport = true;
+          pulseSupport = true;
+        })
+      ];
     };
 
     layout = "us,ru";
@@ -69,14 +77,7 @@
     alacritty
     tdesktop # telegram
     stow
-    (polybar.override {
-      i3GapsSupport = true;
-      pulseSupport = true;
-    })
-    i3-gaps
-    i3lock
     shutter
-    rofi
     starship
     gparted
     networkmanagerapplet
