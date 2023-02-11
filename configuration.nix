@@ -68,6 +68,15 @@ in {
   home-manager.users.artslob = { pkgs, ... }: {
     home.stateVersion = "22.11";
     programs.bash.enable = true;
+    home.pointerCursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Original-Classic";
+    };
+    home.packages = with pkgs;
+      [
+        # useful to check names of gtk icons/themes
+        lxappearance
+      ];
   };
 
   environment.systemPackages = with pkgs; [
