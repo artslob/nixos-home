@@ -72,6 +72,7 @@ in {
       package = pkgs.bibata-cursors;
       name = "Bibata-Original-Classic";
     };
+    xsession.enable = true;
     home.packages = with pkgs;
       [
         # useful to check names of gtk icons/themes
