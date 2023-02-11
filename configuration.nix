@@ -19,25 +19,24 @@
 
   time.timeZone = "Asia/Bangkok";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
 
-  # i3-gaps window manager
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.xterm.enable = false;
-  services.xserver.windowManager.i3.enable = true;
-  services.xserver.windowManager.i3.package = pkgs.i3-gaps;
+    displayManager.sddm.enable = true;
+    desktopManager.xterm.enable = false;
+    windowManager.i3.enable = true;
+    windowManager.i3.package = pkgs.i3-gaps;
 
-  # Configure keymap in X11
-  services.xserver.layout = "us,ru";
-  services.xserver.xkbOptions = "grp:toggle,ctrl:nocaps";
+    layout = "us,ru";
+    xkbOptions = "grp:toggle,ctrl:nocaps";
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+  };
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.artslob = {
