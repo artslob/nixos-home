@@ -3,11 +3,14 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
-{
+let
+  home-manager = builtins.fetchTarball
+    "https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz";
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    (import "${home-manager}/nixos")
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -62,6 +65,11 @@
       options = [ "NOPASSWD" "SETENV" ];
     }];
   }];
+
+  home-manager.users.artslob = { pkgs, ... }: {
+    home.stateVersion = "22.11";
+    programs.bash.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     vim
