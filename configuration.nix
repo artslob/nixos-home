@@ -24,8 +24,10 @@
 
     displayManager.sddm.enable = true;
     desktopManager.xterm.enable = false;
-    windowManager.i3.enable = true;
-    windowManager.i3.package = pkgs.i3-gaps;
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+    };
 
     layout = "us,ru";
     xkbOptions = "grp:toggle,ctrl:nocaps";
