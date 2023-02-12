@@ -78,6 +78,7 @@ in {
         # useful to check names of gtk icons/themes
         lxappearance
       ];
+    programs.starship.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
