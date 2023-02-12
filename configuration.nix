@@ -79,6 +79,29 @@ in {
         lxappearance
       ];
     programs.starship.enable = true;
+    # to list all .desktop entries:
+    # for p in ${XDG_DATA_DIRS//:/ }; do find $p/applications -name '*.desktop' ; done
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/plain" = [ "codium.desktop" ];
+        "text/markdown" = [ "codium.desktop" ];
+        "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
+        "application/pdf" = [ "org.kde.okular.desktop" ];
+        "x-scheme-handler/bitwarden" = [ "bitwarden.desktop" ];
+        "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/chrome" = [ "firefox.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
+        "application/x-extension-htm" = [ "firefox.desktop" ];
+        "application/x-extension-html" = [ "firefox.desktop" ];
+        "application/x-extension-shtml" = [ "firefox.desktop" ];
+        "application/xhtml+xml" = [ "firefox.desktop" ];
+        "application/x-extension-xhtml" = [ "firefox.desktop" ];
+        "application/x-extension-xht" = [ "firefox.desktop" ];
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
