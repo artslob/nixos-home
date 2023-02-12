@@ -67,7 +67,12 @@ in {
 
   home-manager.users.artslob = { pkgs, ... }: {
     home.stateVersion = "22.11";
-    programs.bash.enable = true;
+    programs.bash = {
+      enable = true;
+      bashrcExtra = ''
+        [ -r ~/.bashrc-extra ] && . ~/.bashrc-extra
+      '';
+    };
     home.pointerCursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Original-Classic";
