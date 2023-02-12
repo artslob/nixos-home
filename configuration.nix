@@ -102,6 +102,13 @@ in {
         "application/x-extension-xht" = [ "firefox.desktop" ];
       };
     };
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+      desktop = null;
+      publicShare = null;
+      templates = null;
+    };
   };
 
   environment.systemPackages = with pkgs; [
