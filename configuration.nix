@@ -71,6 +71,8 @@ in {
     programs.bash = {
       enable = true;
       bashrcExtra = ''
+        # fix for nix-shell and starship
+        export STARSHIP_PREEXEC_READY=true;
         [ -r ~/.bashrc-extra ] && . ~/.bashrc-extra
       '';
     };
