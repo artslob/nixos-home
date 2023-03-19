@@ -70,6 +70,10 @@ in {
 
     programs.bash = {
       enable = true;
+      shellAliases = {
+        p = "pwd";
+        g = "git";
+      };
       bashrcExtra = ''
         # fix for nix-shell and starship
         export STARSHIP_PREEXEC_READY=true;
@@ -206,10 +210,6 @@ in {
     jetbrains-mono
   ];
 
-  programs.bash.shellAliases = {
-    p = "pwd";
-    g = "git";
-  };
   programs.bash.undistractMe.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
