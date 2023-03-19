@@ -4,8 +4,9 @@
 
 { config, pkgs, ... }:
 let
+  VERSION = "22.11";
   home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz";
+    "https://github.com/nix-community/home-manager/archive/release-${VERSION}.tar.gz";
 in {
   imports = [
     # Include the results of the hardware scan.
@@ -66,7 +67,7 @@ in {
   }];
 
   home-manager.users.artslob = { pkgs, ... }: {
-    home.stateVersion = "22.11";
+    home.stateVersion = VERSION;
 
     programs.bash = {
       enable = true;
@@ -77,6 +78,7 @@ in {
       bashrcExtra = ''
         # fix for nix-shell and starship
         export STARSHIP_PREEXEC_READY=true;
+
         [ -r ~/.bashrc-extra ] && . ~/.bashrc-extra
       '';
     };
@@ -231,7 +233,5 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
-
+  system.stateVersion = VERSION; # Did you read the comment?
 }
-
