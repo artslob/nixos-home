@@ -156,6 +156,9 @@ in {
 
   };
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (pkgs.lib.getName pkg) [ "zoom" ];
+
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -190,6 +193,7 @@ in {
     jetbrains.idea-community
     vscodium
     dbeaver
+    zoom-us
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
