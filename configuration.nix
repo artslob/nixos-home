@@ -182,6 +182,7 @@ in {
     nomacs # image viewer
     libsForQt5.okular # pdf viewer
     python3
+    rustup
     xdotool # script for alacritty
     arandr
     moreutils # sponge bash command
