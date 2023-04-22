@@ -183,6 +183,7 @@ in {
     libsForQt5.okular # pdf viewer
     python3
     rustup
+    gcc
     xdotool # script for alacritty
     arandr
     moreutils # sponge bash command
