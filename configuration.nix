@@ -196,6 +196,8 @@ in {
     vscodium
     dbeaver
     zoom-us
+    zip
+    unzip
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
