@@ -191,7 +191,8 @@ in {
     docker-compose
     libreoffice
     dunst # notifications
-    smplayer
+    smplayer # video player
+    vlc # video player
     jetbrains.idea-community
     vscodium
     dbeaver
