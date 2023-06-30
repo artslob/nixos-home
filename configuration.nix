@@ -199,6 +199,8 @@ in {
     zoom-us
     zip
     unzip
+    p7zip
+    libheif # heif-convert command
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
