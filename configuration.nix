@@ -177,7 +177,8 @@ in {
     starship
     gparted
     networkmanagerapplet
-    libsForQt5.dolphin
+    libsForQt5.dolphin # file manager
+    gnome.nautilus # file manager
     feh # image viewer
     nomacs # image viewer
     libsForQt5.okular # pdf viewer
