@@ -202,6 +202,7 @@ in {
     unzip
     p7zip
     libheif # heif-convert command
+    imagemagick # convert command
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
