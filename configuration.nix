@@ -136,6 +136,7 @@ in {
       userEmail = "artslob@yandex.ru";
       extraConfig = {
         core.editor = "vim";
+        core.quotePath = false;
         init.defaultBranch = "main";
       };
       aliases = {
