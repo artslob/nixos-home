@@ -5,8 +5,11 @@
 { config, pkgs, ... }:
 let
   VERSION = "22.11";
-  home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/release-${VERSION}.tar.gz";
+  home-manager = builtins.fetchTarball {
+    url =
+      "https://github.com/nix-community/home-manager/archive/release-${VERSION}.tar.gz";
+    sha256 = "1kx7rzi8ycm5hsldihr7a2h19402qw454zgpc16m6y8ghcnfbsxm";
+  };
 in {
   imports = [
     # Include the results of the hardware scan.
