@@ -23,7 +23,6 @@ in {
 
   services.xserver = {
     enable = true;
-    displayManager.defaultSession = "none+i3";
     desktopManager.xterm.enable = false;
     windowManager.i3 = {
       enable = true;
@@ -32,22 +31,28 @@ in {
         i3lock
         rofi
         (polybar.override {
-          i3GapsSupport = true;
+          i3Support = true;
           pulseSupport = true;
         })
       ];
     };
 
-    layout = "us,ru";
-    xkbOptions = "grp:toggle,ctrl:nocaps";
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
+    xkb = {
+      layout = "us,ru";
+      options = "grp:toggle,ctrl:nocaps";
+    };
   };
 
+  services.displayManager.defaultSession = "none+i3";
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.libinput.enable = true;
+
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Conflicting with pipewire
+  # sound.enable = true;
+  # pulseaudio.enable = true;
+  # hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.artslob = {
@@ -165,7 +170,7 @@ in {
     chromium
     git
     htop
-    nixfmt
+    nixfmt-classic
     pre-commit
     openvpn
     bitwarden
@@ -177,7 +182,7 @@ in {
     gparted
     networkmanagerapplet
     libsForQt5.dolphin # file manager
-    gnome.nautilus # file manager
+    nautilus # file manager
     feh # image viewer
     nomacs # image viewer
     libsForQt5.okular # pdf viewer
@@ -195,7 +200,7 @@ in {
     vlc # video player
     jetbrains.idea-community
     vscodium
-    dbeaver
+    dbeaver-bin
     zoom-us
     zip
     unzip
@@ -216,7 +221,7 @@ in {
 
   programs.ssh.startAgent = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     # terminal
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     # window manager workspace bar icons
