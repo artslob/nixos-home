@@ -18,6 +18,7 @@ in {
 
   networking.hostName = "artslob-laptop";
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
 
   time.timeZone = "Asia/Bangkok";
 
