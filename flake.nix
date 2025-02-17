@@ -20,6 +20,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.users.artslob = import ./home.nix;
         }
       ];
     };
