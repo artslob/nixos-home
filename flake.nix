@@ -12,7 +12,7 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let hostConfig = { asus = { stateVersion = "22.11"; }; };
     in {
-      nixosConfigurations.artslob-laptop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { hostConfig = hostConfig.asus; };
         modules = [

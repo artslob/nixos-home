@@ -2,5 +2,5 @@
 
 To build flake use:
 ```bash
-sudo nixos-rebuild switch --flake .#artslob-laptop --verbose
+sudo nixos-rebuild switch --flake .#asus --verbose
 ```
