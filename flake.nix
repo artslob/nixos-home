@@ -9,21 +9,22 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.artslob-laptop = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.artslob = import ./home.nix;
-        }
-      ];
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let hostConfig = { asus = { stateVersion = "22.11"; }; };
+    in {
+      nixosConfigurations.artslob-laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { hostConfig = hostConfig.asus; };
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.users.artslob = import ./home.nix;
+          }
+        ];
+      };
     };
-  };
 }
