@@ -1,6 +1,5 @@
-{ pkgs, ... }: {
-  # TODO move to config
-  home.stateVersion = "22.11";
+{ pkgs, hostConfig, ... }: {
+  home.stateVersion = hostConfig.stateVersion;
 
   programs.bash = {
     enable = true;

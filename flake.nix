@@ -22,6 +22,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
+            home-manager.extraSpecialArgs = { hostConfig = hostConfig.asus; };
             home-manager.users.artslob = import ./home.nix;
           }
         ];
