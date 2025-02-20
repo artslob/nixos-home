@@ -23,6 +23,7 @@
       package = pkgs.i3-gaps;
       extraPackages = with pkgs; [
         i3lock
+        i3blocks
         rofi
         (polybar.override {
           i3Support = true;
