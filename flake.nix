@@ -16,7 +16,7 @@
         system = "x86_64-linux";
         specialArgs = { hostConfig = hostConfig.asus; };
         modules = [
-          ./configuration.nix
+          ./hosts/asus
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
