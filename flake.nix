@@ -23,7 +23,7 @@
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = { hostConfig = hostConfig.asus; };
-            home-manager.users.artslob = import ./home.nix;
+            home-manager.users.artslob = import ./home/asus.nix;
           }
         ];
       };
