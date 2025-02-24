@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dotfiles = {
+      url = "github:artslob/dotfiles/dev";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, dotfiles, ... }@inputs:
     let hostConfig = { asus = { stateVersion = "22.11"; }; };
     in {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
@@ -22,7 +26,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = { hostConfig = hostConfig.asus; };
+            home-manager.extraSpecialArgs = {
+              hostConfig = hostConfig.asus;
+              inherit dotfiles;
+            };
             home-manager.users.artslob = import ./home/asus.nix;
           }
         ];
