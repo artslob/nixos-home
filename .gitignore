@@ -1,1 +1,4 @@
 /.idea/
+
+# created by `nixos-rebuild build` command
+/result 
