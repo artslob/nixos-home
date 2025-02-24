@@ -37,21 +37,21 @@
       keyboard.bindings = [
         {
           key = "K";
-          mode = "~Alt";
           mods = "Control|Shift";
+          mode = "~Alt";
           command = {
+            program = "bash";
             args = [
               "-c"
               "${dotfiles}/alacritty/.config/alacritty/clear-focused-tty.sh"
             ];
-            program = "bash";
           };
         }
         {
-          chars = "\r";
           key = "K";
-          mode = "~Alt";
           mods = "Control|Shift";
+          mode = "~Alt";
+          chars = "\r";
         }
       ];
       colors = {
