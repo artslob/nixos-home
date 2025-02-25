@@ -118,6 +118,13 @@
     };
   };
 
+  xsession.windowManager.i3 = {
+    enable = true;
+    package = pkgs.i3-gaps;
+    config = null;
+    extraConfig = builtins.readFile "${dotfiles}/i3/.config/i3/config";
+  };
+
   # to list all .desktop entries:
   # for p in ${XDG_DATA_DIRS//:/ }; do find $p/applications -name '*.desktop' ; done
   xdg.mimeApps = {
