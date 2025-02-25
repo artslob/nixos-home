@@ -125,6 +125,19 @@
     extraConfig = builtins.readFile "${dotfiles}/i3/.config/i3/config";
   };
 
+  # to read logs: journalctl --user -xeu polybar
+  services.polybar = {
+    enable = true;
+    package = pkgs.polybar.override {
+      i3Support = true;
+      alsaSupport = true;
+      pulseSupport = true;
+    };
+    script = ''
+      polybar -c "${dotfiles}/polybar/.config/polybar/config.ini" 2>&1 &
+    '';
+  };
+
   # to list all .desktop entries:
   # for p in ${XDG_DATA_DIRS//:/ }; do find $p/applications -name '*.desktop' ; done
   xdg.mimeApps = {
