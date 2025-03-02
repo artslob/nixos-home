@@ -131,6 +131,7 @@
         inner = 12;
         smartGaps = true;
       };
+      bars = [ ];
       keybindings =
         let modifier = config.xsession.windowManager.i3.config.modifier;
         in lib.mkOptionDefault {
