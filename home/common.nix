@@ -231,7 +231,6 @@
         }
       ];
     };
-    # extraConfig = builtins.readFile "${dotfiles}/i3/.config/i3/config";
     extraConfig = ''
       default_border pixel 3
       default_floating_border pixel 3
