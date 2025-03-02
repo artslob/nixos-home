@@ -187,7 +187,18 @@
             ''exec --no-startup-id "dunstctl history-pop"'';
           "${modifier}+bracketright" =
             ''exec --no-startup-id "dunstctl close"'';
+          "${modifier}+r" = "mode resize";
         };
+      modes = {
+        resize = {
+          Left = "resize shrink width 10 px or 10 ppt";
+          Right = "resize grow width 10 px or 10 ppt";
+          Down = "resize grow height 10 px or 10 ppt";
+          Up = "resize shrink height 10 px or 10 ppt";
+          Escape = "mode default";
+          Return = "mode default";
+        };
+      };
       startup = [{
         command = "systemctl --user restart polybar";
         always = true;
