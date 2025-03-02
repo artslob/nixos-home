@@ -1,1 +1,1 @@
-{ config, pkgs, ... }: { imports = [ ./common.nix ]; }
+{ config, pkgs, ... }: { imports = [ ./common ]; }
