@@ -22,11 +22,12 @@
 
   xsession.enable = true;
 
-  home.packages = with pkgs;
-    [
-      # useful to check names of gtk icons/themes
-      lxappearance
-    ];
+  home.packages = with pkgs; [
+    # useful to check names of gtk icons/themes
+    lxappearance
+    # for amixer
+    alsa-utils
+  ];
 
   programs.starship.enable = true;
 
@@ -196,6 +197,16 @@
           "${modifier}+bracketright" =
             ''exec --no-startup-id "dunstctl close"'';
           "${modifier}+r" = "mode resize";
+          "XF86AudioMute" =
+            ''exec --no-startup-id "amixer sset Master toggle"'';
+          "${modifier}+F10" =
+            ''exec --no-startup-id "amixer sset Master toggle"'';
+          "XF86AudioLowerVolume" =
+            ''exec --no-startup-id "amixer sset Master 5%-"'';
+          "${modifier}+F11" = ''exec --no-startup-id "amixer sset Master 5%-"'';
+          "XF86AudioRaiseVolume" =
+            ''exec --no-startup-id "amixer sset Master 5%+"'';
+          "${modifier}+F12" = ''exec --no-startup-id "amixer sset Master 5%+"'';
         };
       modes = {
         resize = {
