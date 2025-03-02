@@ -183,7 +183,8 @@
           "${modifier}+Next" = "workspace next_on_output";
           "${modifier}+Prior" = "workspace prev_on_output";
           "${modifier}+l" = "exec i3lock -fe";
-          "${modifier}+bracketleft" = ''exec --no-startup-id "dunstctl close"'';
+          "${modifier}+bracketleft" =
+            ''exec --no-startup-id "dunstctl history-pop"'';
           "${modifier}+bracketright" =
             ''exec --no-startup-id "dunstctl close"'';
         };
