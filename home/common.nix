@@ -29,7 +29,16 @@
     alsa-utils
   ];
 
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      cmd_duration = {
+        show_notifications = true;
+        min_time_to_notify = 5000;
+        notification_timeout = 5000;
+      };
+    };
+  };
 
   programs.alacritty = {
     enable = true;
