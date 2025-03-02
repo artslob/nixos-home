@@ -207,11 +207,18 @@
           Return = "mode default";
         };
       };
-      startup = [{
-        command = "systemctl --user restart polybar";
-        always = true;
-        notification = false;
-      }];
+      startup = [
+        {
+          command = "systemctl --user restart polybar";
+          always = true;
+          notification = false;
+        }
+        {
+          command = "shutter --min_at_startup";
+          always = false;
+          notification = false;
+        }
+      ];
     };
     # extraConfig = builtins.readFile "${dotfiles}/i3/.config/i3/config";
     extraConfig = ''
