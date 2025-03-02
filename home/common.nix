@@ -236,6 +236,8 @@
 
   services.dunst.enable = true;
 
+  services.blueman-applet.enable = true;
+
   # to list all .desktop entries:
   # for p in ${XDG_DATA_DIRS//:/ }; do find $p/applications -name '*.desktop' ; done
   xdg.mimeApps = {
