@@ -127,6 +127,13 @@
         names = [ "JetBrains Mono" ];
         size = 9.0;
       };
+      colors.focused = {
+        border = "#9ECE6A";
+        background = "#373B41";
+        text = "#FFFFFF";
+        indicator = "#FFFFFF";
+        childBorder = "#9ECE6A";
+      };
       gaps = {
         inner = 12;
         smartGaps = true;
