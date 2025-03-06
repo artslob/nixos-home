@@ -5,10 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -17,7 +14,8 @@
   networking.hostName = "loq"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -37,11 +35,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -65,9 +61,7 @@
   users.users.artslob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
+    packages = with pkgs; [ tree ];
   };
 
   programs.firefox.enable = true;
