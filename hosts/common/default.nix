@@ -9,7 +9,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "artslob-laptop";
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
