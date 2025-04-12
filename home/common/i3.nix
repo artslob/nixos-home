@@ -87,6 +87,8 @@
           "XF86AudioRaiseVolume" =
             ''exec --no-startup-id "amixer sset Master 5%+"'';
           "${modifier}+F12" = ''exec --no-startup-id "amixer sset Master 5%+"'';
+          "XF86MonBrightnessUp" = ''exec --no-startup-id brightnessctl set +5%'';
+          "XF86MonBrightnessDown" = ''exec --no-startup-id brightnessctl set 5%-'';
         };
       modes = {
         resize = {

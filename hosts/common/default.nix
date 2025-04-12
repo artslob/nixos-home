@@ -28,6 +28,7 @@
           i3Support = true;
           pulseSupport = true;
         })
+        brightnessctl
       ];
     };
 
