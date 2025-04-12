@@ -1,4 +1,4 @@
-{ dotfiles, ... }: {
+{ ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -10,10 +10,7 @@
           mode = "~Alt";
           command = {
             program = "bash";
-            args = [
-              "-c"
-              "${dotfiles}/alacritty/.config/alacritty/clear-focused-tty.sh"
-            ];
+            args = [ "-c" ./clear-focused-tty.sh ];
           };
         }
         {
