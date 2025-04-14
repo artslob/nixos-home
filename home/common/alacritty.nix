@@ -2,7 +2,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      scrolling.history = 30000;
+      scrolling.history = 100000;
       keyboard.bindings = [
         {
           key = "K";
