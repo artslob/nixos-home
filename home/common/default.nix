@@ -62,7 +62,6 @@
         disabled = "#707880";
       };
     in {
-      # [colors] section
       "colors" = {
         background = colors.background;
         "background-alt" = colors."background-alt";
@@ -72,8 +71,6 @@
         alert = colors.alert;
         disabled = colors.disabled;
       };
-
-      # [bar/main] section
       "bar/main" = {
         width = "100%";
         height = "24pt";
@@ -104,8 +101,6 @@
         "enable-ipc" = true;
         "tray-position" = "right";
       };
-
-      # [module/i3] section
       "module/i3" = {
         type = "internal/i3";
         "pin-workspaces" = true;
@@ -124,35 +119,36 @@
         "ws-icon-8" = "9;  ";
         "ws-icon-9" = "10;10 ";
         format = "<label-state> <label-mode>";
+        # shows modes, for example "resize"
         "label-mode" = "%mode%";
         "label-mode-foreground" = colors.alert;
         "label-mode-underline" = colors.alert;
         "label-mode-padding" = 1;
+        # focused = Active workspace on focused monitor
         "label-focused" = "%icon%";
         "label-focused-background" = colors."background-alt";
         "label-focused-underline" = colors.primary;
         "label-focused-padding" = 1;
+        # unfocused = Inactive workspace on any monitor
         "label-unfocused" = "%icon%";
         "label-unfocused-padding" = 1;
+        # visible = Active workspace on unfocused monitor
         "label-visible" = "%icon%";
-        # The self references here follow the original config.
         "label-visible-background" = "${self.label-focused-background}";
         "label-visible-underline" = "${self.label-focused-underline}";
         "label-visible-padding" = "${self.label-focused-padding}";
+        # urgent = Workspace with urgency hint set
         "label-urgent" = "%icon%";
         "label-urgent-foreground" = colors.alert;
         "label-urgent-underline" = colors.alert;
         "label-urgent-padding" = 1;
+        # Separator in between workspaces
         "label-separator" = "|";
       };
-
-      # [module/xwindow]
       "module/xwindow" = {
         type = "internal/xwindow";
         "label-maxlen" = 80;
       };
-
-      # [module/filesystem]
       "module/filesystem" = {
         type = "internal/fs";
         interval = 60;
@@ -168,8 +164,6 @@
         "format-warn-prefix-foreground" = colors.alert;
         "label-warn" = "${self.label-mounted}";
       };
-
-      # [module/pulseaudio]
       "module/pulseaudio" = {
         type = "internal/pulseaudio";
         "format-volume" = "<ramp-volume> <label-volume>";
@@ -182,8 +176,6 @@
         "label-muted-foreground" = colors.disabled;
         "click-right" = "pavucontrol";
       };
-
-      # [module/xkeyboard]
       "module/xkeyboard" = {
         type = "internal/xkeyboard";
         "blacklist-0" = "num lock";
@@ -191,6 +183,8 @@
         "format-prefix" = " ";
         "format-prefix-foreground" = colors.secondary;
         "label-layout" = "%icon%";
+        # Assign each layout an icon that will be available as %icon% token for the <label-layout> tag.
+        # The part before ';' will try to match %layout% value.
         "layout-icon-0" = "us;";
         "layout-icon-1" = "ru;%{F#0a6cf5}%{F-}";
         "label-indicator-on" = "%name%";
@@ -199,8 +193,6 @@
         "label-indicator-on-foreground" = colors.background;
         "label-indicator-on-background" = colors.secondary;
       };
-
-      # [module/memory]
       "module/memory" = {
         type = "internal/memory";
         interval = 2;
@@ -214,8 +206,6 @@
         "format-warn-prefix-foreground" = colors.alert;
         "label-warn" = "${self.label}";
       };
-
-      # [module/cpu]
       "module/cpu" = {
         type = "internal/cpu";
         interval = 2;
@@ -229,10 +219,10 @@
         "format-warn-prefix-foreground" = colors.alert;
         "label-warn" = "${self.label}";
       };
-
-      # [module/battery]
       "module/battery" = {
         type = "internal/battery";
+        # Use the following command to list batteries and adapters:
+        # ls -1 /sys/class/power_supply/
         battery = "BAT0";
         adapter = "AC";
         "time-format" = "%H:%M";
@@ -267,16 +257,12 @@
         "animation-low-foreground" = colors.alert;
         "animation-low-framerate" = "${self.animation-charging-framerate}";
       };
-
-      # [network-base] used by the WLAN and Ethernet modules
       "network-base" = {
         type = "internal/network";
         interval = 5;
         "format-connected" = "<label-connected>";
         "format-disconnected" = "";
       };
-
-      # [module/wlan]
       "module/wlan" = {
         "inherit" = "network-base";
         "interface-type" = "wireless";
@@ -284,16 +270,12 @@
         "format-connected-prefix-foreground" = colors.primary;
         "label-connected" = "%signal%";
       };
-
-      # [module/eth]
       "module/eth" = {
         "inherit" = "network-base";
         "interface-type" = "wired";
         "format-connected-foreground" = colors.primary;
         "label-connected" = "";
       };
-
-      # [module/date]
       "module/date" = {
         type = "internal/date";
         interval = 1;
@@ -303,8 +285,6 @@
         "time-alt" = "%H:%M";
         label = "%date% %time%";
       };
-
-      # [settings] section
       "settings" = {
         "screenchange-reload" = true;
         "pseudo-transparency" = true;
