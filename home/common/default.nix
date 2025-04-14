@@ -111,13 +111,13 @@
         "ws-icon-0" = "1;  ";
         "ws-icon-1" = "2;  ";
         "ws-icon-2" = "3;  ";
-        "ws-icon-3" = "4;4 ";
-        "ws-icon-4" = "5;  ";
-        "ws-icon-5" = "6;6 ";
-        "ws-icon-6" = "7;7 ";
+        "ws-icon-3" = "4;  ";
+        "ws-icon-4" = "5;  ";
+        "ws-icon-5" = "6;  ";
+        "ws-icon-6" = "7;  ";
         "ws-icon-7" = "8;  ";
         "ws-icon-8" = "9;  ";
-        "ws-icon-9" = "10;10 ";
+        "ws-icon-9" = "10;  ";
         format = "<label-state> <label-mode>";
         # shows modes, for example "resize"
         "label-mode" = "%mode%";
@@ -223,6 +223,7 @@
         type = "internal/battery";
         # Use the following command to list batteries and adapters:
         # ls -1 /sys/class/power_supply/
+        # TODO fix battery
         battery = "BAT0";
         adapter = "AC";
         "time-format" = "%H:%M";
@@ -284,6 +285,7 @@
         "time-alt" = "%H:%M";
         label = "%date% %time%";
       };
+      # TODO brightness module
       "settings" = {
         "screenchange-reload" = true;
         "pseudo-transparency" = true;
