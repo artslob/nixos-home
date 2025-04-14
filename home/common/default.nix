@@ -101,7 +101,7 @@
         "enable-ipc" = true;
         "tray-position" = "right";
       };
-      "module/i3" = {
+      "module/i3" = rec {
         type = "internal/i3";
         "pin-workspaces" = true;
         "enable-scroll" = false;
@@ -134,9 +134,9 @@
         "label-unfocused-padding" = 1;
         # visible = Active workspace on unfocused monitor
         "label-visible" = "%icon%";
-        "label-visible-background" = "${self.label-focused-background}";
-        "label-visible-underline" = "${self.label-focused-underline}";
-        "label-visible-padding" = "${self.label-focused-padding}";
+        "label-visible-background" = label-focused-background;
+        "label-visible-underline" = label-focused-underline;
+        "label-visible-padding" = label-focused-padding;
         # urgent = Workspace with urgency hint set
         "label-urgent" = "%icon%";
         "label-urgent-foreground" = colors.alert;
@@ -149,7 +149,7 @@
         type = "internal/xwindow";
         "label-maxlen" = 80;
       };
-      "module/filesystem" = {
+      "module/filesystem" = rec {
         type = "internal/fs";
         interval = 60;
         "mount-0" = "/";
@@ -160,9 +160,9 @@
         "label-unmounted-foreground" = colors.disabled;
         "warn-percentage" = 80;
         "format-warn" = "<label-warn>";
-        "format-warn-prefix" = "${self.format-mounted-prefix}";
+        "format-warn-prefix" = format-mounted-prefix;
         "format-warn-prefix-foreground" = colors.alert;
-        "label-warn" = "${self.label-mounted}";
+        "label-warn" = label-mounted;
       };
       "module/pulseaudio" = {
         type = "internal/pulseaudio";
@@ -193,7 +193,7 @@
         "label-indicator-on-foreground" = colors.background;
         "label-indicator-on-background" = colors.secondary;
       };
-      "module/memory" = {
+      "module/memory" = rec {
         type = "internal/memory";
         interval = 2;
         format = "<label>";
@@ -202,11 +202,11 @@
         label = "%percentage_used:2%%";
         "warn-percentage" = 90;
         "format-warn" = "<label-warn>";
-        "format-warn-prefix" = "${self.format-prefix}";
+        "format-warn-prefix" = format-prefix;
         "format-warn-prefix-foreground" = colors.alert;
-        "label-warn" = "${self.label}";
+        "label-warn" = label;
       };
-      "module/cpu" = {
+      "module/cpu" = rec {
         type = "internal/cpu";
         interval = 2;
         format = "<label>";
@@ -215,11 +215,11 @@
         label = "%percentage:02%%";
         "warn-percentage" = 90;
         "format-warn" = "<label-warn>";
-        "format-warn-prefix" = "${self.format-prefix}";
+        "format-warn-prefix" = format-prefix;
         "format-warn-prefix-foreground" = colors.alert;
-        "label-warn" = "${self.label}";
+        "label-warn" = label;
       };
-      "module/battery" = {
+      "module/battery" = rec {
         type = "internal/battery";
         # Use the following command to list batteries and adapters:
         # ls -1 /sys/class/power_supply/
@@ -247,15 +247,14 @@
         "animation-discharging-2" = "";
         "animation-discharging-3" = "";
         "animation-discharging-foreground" = colors.primary;
-        "animation-discharging-framerate" =
-          "${self.animation-charging-framerate}";
+        "animation-discharging-framerate" = animation-charging-framerate;
         "format-low" = "<animation-low> <label-low>";
-        "animation-low-0" = "${self.animation-discharging-0}";
-        "animation-low-1" = "${self.animation-discharging-1}";
-        "animation-low-2" = "${self.animation-discharging-2}";
-        "animation-low-3" = "${self.animation-discharging-3}";
+        "animation-low-0" = animation-discharging-0;
+        "animation-low-1" = animation-discharging-1;
+        "animation-low-2" = animation-discharging-2;
+        "animation-low-3" = animation-discharging-3;
         "animation-low-foreground" = colors.alert;
-        "animation-low-framerate" = "${self.animation-charging-framerate}";
+        "animation-low-framerate" = animation-charging-framerate;
       };
       "network-base" = {
         type = "internal/network";
@@ -290,9 +289,7 @@
         "pseudo-transparency" = true;
       };
     };
-    # script = ''
-    #   polybar -c "${dotfiles}/polybar/.config/polybar/config.ini" 2>&1 &
-    # '';
+    script = "polybar main &";
   };
 
   services.dunst.enable = true;
