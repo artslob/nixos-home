@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, ... }: {
   # to read logs: journalctl --user -xeu polybar
   services.polybar = {
     enable = true;
@@ -179,9 +179,8 @@
         type = "internal/battery";
         # Use the following command to list batteries and adapters:
         # ls -1 /sys/class/power_supply/
-        # TODO fix battery
-        battery = "BAT0";
-        adapter = "AC";
+        battery = lib.mkDefault "BAT0";
+        adapter = lib.mkDefault "AC";
         "time-format" = "%H:%M";
         "full-at" = 95;
         "low-at" = 30;
