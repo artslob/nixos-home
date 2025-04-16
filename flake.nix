@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # TODO remove dotfiles
     dotfiles = {
       url = "github:artslob/dotfiles/dev";
       flake = false;
