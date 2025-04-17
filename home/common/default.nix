@@ -1,4 +1,4 @@
-{ pkgs, lib, hostConfig, dotfiles, config, ... }: {
+{ pkgs, lib, hostConfig, config, ... }: {
   imports = [ ./alacritty.nix ./i3.nix ./polybar.nix ];
 
   home.stateVersion = hostConfig.stateVersion;
