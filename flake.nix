@@ -7,14 +7,9 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # TODO remove dotfiles
-    dotfiles = {
-      url = "github:artslob/dotfiles/dev";
-      flake = false;
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, dotfiles, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       hostConfig = {
         asus = { stateVersion = "22.11"; };
@@ -31,10 +26,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              hostConfig = hostConfig.asus;
-              inherit dotfiles;
-            };
+            home-manager.extraSpecialArgs = { hostConfig = hostConfig.asus; };
             home-manager.users.artslob = import ./home/asus.nix;
           }
         ];
@@ -49,10 +41,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              hostConfig = hostConfig.loq;
-              inherit dotfiles;
-            };
+            home-manager.extraSpecialArgs = { hostConfig = hostConfig.loq; };
             home-manager.users.artslob = import ./home/loq.nix;
           }
         ];

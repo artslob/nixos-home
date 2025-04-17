@@ -1,22 +1,5 @@
 {
   "nodes": {
-    "dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740054921,
-        "narHash": "sha256-rXb7g3BZf3jo5ceTic+mJGN/kDocZ2NX6FG7bJ4OjLE=",
-        "owner": "artslob",
-        "repo": "dotfiles",
-        "rev": "af8765c057e97381fcd432ebdfa79b7c74e3fa52",
-        "type": "github"
-      },
-      "original": {
-        "owner": "artslob",
-        "ref": "dev",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -56,7 +39,6 @@
     },
     "root": {
       "inputs": {
-        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
