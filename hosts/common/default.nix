@@ -12,7 +12,7 @@
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-  time.timeZone = "Asia/Bangkok";
+  time.timeZone = "Asia/Tel_Aviv";
 
   services.xserver = {
     enable = true;
