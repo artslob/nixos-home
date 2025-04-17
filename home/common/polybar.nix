@@ -51,7 +51,7 @@
 
         "modules-left" = "i3 xwindow";
         "modules-right" =
-          "xkeyboard pulseaudio filesystem memory cpu battery wlan eth date";
+          "xkeyboard pulseaudio backlight filesystem memory cpu battery wlan eth date";
         "cursor-click" = "pointer";
         "cursor-scroll" = "ns-resize";
         "enable-ipc" = true;
@@ -240,7 +240,13 @@
         "time-alt" = "%H:%M";
         label = "%date% %time%";
       };
-      # TODO brightness module
+      "module/backlight" = {
+        type = "internal/backlight";
+        "enable-scroll" = false;
+        "scroll-interval" = 5;
+        "format-prefix" = " ";
+        "format-prefix-foreground" = colors.primary;
+      };
       "settings" = {
         "screenchange-reload" = true;
         "pseudo-transparency" = true;
