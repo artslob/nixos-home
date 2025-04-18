@@ -109,6 +109,7 @@
     zip
     unzip
     p7zip
+    unar
     libheif # heif-convert command
     imagemagick # convert command
     bat
