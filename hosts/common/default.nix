@@ -102,6 +102,7 @@
     dunst # notifications
     smplayer # video player
     vlc # video player
+    pavucontrol
     jetbrains.idea-community
     vscodium
     dbeaver-bin
