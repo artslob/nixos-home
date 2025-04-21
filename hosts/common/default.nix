@@ -114,6 +114,7 @@
     libheif # heif-convert command
     imagemagick # convert command
     bat
+    tree
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
