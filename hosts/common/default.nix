@@ -73,6 +73,7 @@
     firefox
     chromium
     git
+    gnupg
     htop
     nixfmt-classic
     pre-commit
