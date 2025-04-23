@@ -65,7 +65,7 @@
   }];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [ "zoom" ];
+    builtins.elem (pkgs.lib.getName pkg) [ "zoom" "slack" ];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -107,6 +107,7 @@
     vscodium
     dbeaver-bin
     zoom-us
+    slack
     zip
     unzip
     p7zip
