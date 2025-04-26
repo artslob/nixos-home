@@ -86,6 +86,9 @@
       core.editor = "vim";
       core.quotePath = false;
       init.defaultBranch = "main";
+      user.signingkey = "~/.ssh/id_ed25519.pub";
+      gpg.format = "ssh";
+      commit.gpgsign = true;
     };
     aliases = {
       a = "add";
