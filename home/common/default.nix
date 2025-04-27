@@ -8,6 +8,8 @@
     shellAliases = {
       p = "pwd";
       g = "git";
+      l = "ls -l";
+      ll = "ls -alh";
     };
     bashrcExtra = ''
       # fix for nix-shell and starship
