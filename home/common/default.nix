@@ -87,6 +87,7 @@
     extraConfig = {
       core.editor = "vim";
       core.quotePath = false;
+      core.sshCommand = "ssh -i ~/.ssh/id_ed25519";
       init.defaultBranch = "main";
       user.signingkey = "~/.ssh/id_ed25519.pub";
       gpg.format = "ssh";
@@ -114,6 +115,7 @@
           email = "artem.s@onside.io";
           signingkey = "~/onside-keys/id_ed25519.pub";
         };
+        core.sshCommand = "ssh -i ~/onside-keys/id_ed25519";
         gpg.format = "ssh";
         commit.gpgsign = true;
       };
