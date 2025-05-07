@@ -78,6 +78,7 @@
     nixfmt-classic
     pre-commit
     openvpn
+    wireguard-tools # wg-quick for VPN
     bitwarden
     alacritty
     tdesktop # telegram
