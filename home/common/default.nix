@@ -113,9 +113,9 @@
         user = {
           name = "artem.s";
           email = "artem.s@onside.io";
-          signingkey = "~/onside-keys/id_ed25519.pub";
+          signingkey = "~/.ssh/onside/id_ed25519.pub";
         };
-        core.sshCommand = "ssh -i ~/onside-keys/id_ed25519";
+        core.sshCommand = "ssh -i ~/.ssh/onside/id_ed25519";
         gpg.format = "ssh";
         commit.gpgsign = true;
       };
