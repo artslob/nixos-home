@@ -96,16 +96,17 @@
     aliases = {
       a = "add";
       au = "add -u";
-      s = "status";
       c = "commit";
       ca = "commit -a";
+      ch = "checkout";
       d = "diff";
       dc = "diff --cached";
-      pu = "push";
-      ch = "checkout";
       l = "log";
       lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+      pu = "push";
+      s = "status";
+      sw = "switch";
     };
     includes = [{
       condition = "gitdir:~/onside/";
