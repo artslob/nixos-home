@@ -133,7 +133,7 @@
 
   fonts.packages = with pkgs; [
     # terminal
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
     # window manager workspace bar icons
     font-awesome
     # window manager workspace bar text
