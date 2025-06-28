@@ -99,6 +99,7 @@
     arandr
     moreutils # sponge bash command
     killall
+    jq
     neofetch
     docker-compose
     libreoffice
