@@ -98,6 +98,7 @@
     xdotool # script for alacritty
     arandr
     moreutils # sponge bash command
+    killall
     neofetch
     docker-compose
     libreoffice
