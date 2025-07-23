@@ -120,6 +120,7 @@
     imagemagick # convert command
     bat
     tree
+    simplescreenrecorder
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
