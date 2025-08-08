@@ -25,6 +25,7 @@
       lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
       pu = "push";
       s = "status";
+      sh = "show";
       sw = "switch";
     };
     includes = [{
