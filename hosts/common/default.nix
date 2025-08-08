@@ -73,6 +73,7 @@
     firefox
     chromium
     git
+    age
     gnupg
     htop
     nixfmt-classic
