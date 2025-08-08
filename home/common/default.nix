@@ -19,6 +19,8 @@
     '';
   };
 
+  home.sessionPath = [ "~/.cargo/bin/" ];
+
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Original-Classic";
