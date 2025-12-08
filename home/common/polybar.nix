@@ -43,11 +43,11 @@
         # Fonts are 1-indexed; these correspond to font-N in your original config.
         "font-0" = "JetBrains Mono:style=Regular:size=10.5;2";
         "font-1" =
-          "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=10.5;2";
+          "Font Awesome 7 Free,Font Awesome 7 Free Regular:style=Regular:size=10.5;2";
         "font-2" =
-          "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=10.5;2";
+          "Font Awesome 7 Brands,Font Awesome 7 Brands Regular:style=Regular:size=10.5;2";
         "font-3" =
-          "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=10.5;2";
+          "Font Awesome 7 Free,Font Awesome 7 Free Solid:style=Solid:size=10.5;2";
 
         "modules-left" = "i3 xwindow";
         "modules-right" =
