@@ -122,6 +122,7 @@
     bat
     tree
     simplescreenrecorder
+    obs-studio # screen recorder
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
