@@ -19,7 +19,7 @@
     desktopManager.xterm.enable = false;
     windowManager.i3 = {
       enable = true;
-      package = pkgs.i3-gaps;
+      package = pkgs.i3;
       extraPackages = with pkgs; [
         i3lock
         i3blocks
@@ -80,19 +80,19 @@
     pre-commit
     openvpn
     wireguard-tools # wg-quick for VPN
-    bitwarden
+    bitwarden-desktop
     alacritty
-    tdesktop # telegram
+    telegram-desktop
     stow
     shutter
     starship
     gparted
     networkmanagerapplet
-    libsForQt5.dolphin # file manager
+    kdePackages.dolphin # file manager
     nautilus # file manager
     feh # image viewer
     nomacs # image viewer
-    libsForQt5.okular # pdf viewer
+    kdePackages.okular # pdf viewer
     python3
     rustup
     gcc
@@ -127,6 +127,8 @@
 
   # keyring keeps passwords, e.g. for nm-applet
   services.gnome.gnome-keyring.enable = true;
+  # disabled because of conflict with `programs.ssh.startAgent`
+  services.gnome.gcr-ssh-agent.enable = false;
 
   virtualisation.docker.enable = true;
 
