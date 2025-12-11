@@ -123,6 +123,7 @@
     tree
     simplescreenrecorder
     obs-studio # screen recorder
+    gemini-cli
     claude-code
   ];
 
