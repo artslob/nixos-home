@@ -65,7 +65,7 @@
   }];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [ "zoom" "slack" ];
+    builtins.elem (pkgs.lib.getName pkg) [ "zoom" "slack" "claude-code" ];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -123,6 +123,7 @@
     tree
     simplescreenrecorder
     obs-studio # screen recorder
+    claude-code
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
