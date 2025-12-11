@@ -21,6 +21,7 @@
         ch = "checkout";
         d = "diff";
         dc = "diff --cached";
+        fe = "fetch";
         l = "log";
         lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
         lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
