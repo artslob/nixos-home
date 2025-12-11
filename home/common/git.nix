@@ -25,6 +25,7 @@
         lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
         lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
         pu = "push";
+        re = "restore";
         s = "status";
         sh = "show";
         sw = "switch";
