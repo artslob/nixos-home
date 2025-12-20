@@ -15,6 +15,23 @@
       # fix for nix-shell and starship
       export STARSHIP_PREEXEC_READY=true;
 
+      # Create backup of current git branch with incremental suffix
+      gbak() {
+        local current_branch
+        current_branch=$(git rev-parse --abbrev-ref HEAD) || return 1
+
+        local counter=1
+        local backup_name="''${current_branch}.backup-''${counter}"
+
+        while git show-ref --verify --quiet "refs/heads/''${backup_name}"; do
+          ((counter++))
+          backup_name="''${current_branch}.backup-''${counter}"
+        done
+
+        git branch "$backup_name"
+        echo "Created backup branch: $backup_name"
+      }
+
       [ -r ~/.bashrc-extra ] && . ~/.bashrc-extra
     '';
   };
