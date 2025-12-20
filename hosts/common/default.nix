@@ -158,6 +158,10 @@
   };
   services.blueman.enable = true;
 
+  # Enable numlock on console TTY (before graphical session)
+  systemd.services."getty@".serviceConfig.ExecStartPre =
+    [ "-${pkgs.kbd}/bin/setleds -D +num" ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

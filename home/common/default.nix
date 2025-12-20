@@ -45,6 +45,9 @@
 
   xsession.enable = true;
 
+  # Enable numlock when X session starts
+  xsession.numlock.enable = true;
+
   home.packages = with pkgs; [
     # useful to check names of gtk icons/themes
     lxappearance
