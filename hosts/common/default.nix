@@ -125,6 +125,9 @@
     obs-studio # screen recorder
     gemini-cli
     claude-code
+    # send files in local network
+    # required disabling firewall (networking.firewall.enable = false)
+    localsend
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
