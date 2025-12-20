@@ -48,6 +48,17 @@
   # Enable numlock when X session starts
   xsession.numlock.enable = true;
 
+  # Disable touchpad by default when X session starts
+  # Hardware Fn key toggle (Fn+F10) will continue to work
+  xsession.initExtra = ''
+    # Wait briefly for X to initialize input devices
+    sleep 1
+
+    # Disable touchpad by device name pattern
+    xinput list | grep -q "Touchpad" && \
+      xinput disable "$(xinput list | grep "Touchpad" | grep -oP 'id=\K\d+' | head -1)"
+  '';
+
   home.packages = with pkgs; [
     # useful to check names of gtk icons/themes
     lxappearance
