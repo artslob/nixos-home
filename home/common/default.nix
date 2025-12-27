@@ -66,6 +66,12 @@
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   services.dunst.enable = true;
 
   services.blueman-applet.enable = true;
