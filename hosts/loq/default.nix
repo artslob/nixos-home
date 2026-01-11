@@ -5,7 +5,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../common ];
+  imports = [ ./hardware-configuration.nix ../common ./memory.nix ];
 
   networking.hostName = "loq";
 
