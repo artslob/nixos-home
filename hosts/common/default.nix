@@ -65,7 +65,12 @@
   }];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [ "zoom" "slack" "claude-code" ];
+    builtins.elem (pkgs.lib.getName pkg) [
+      "zoom"
+      "slack"
+      "claude-code"
+      "cursor-cli"
+    ];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -125,6 +130,7 @@
     obs-studio # screen recorder
     gemini-cli
     claude-code
+    cursor-cli
     # send files in local network
     # required disabling firewall (networking.firewall.enable = false)
     localsend
