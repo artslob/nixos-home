@@ -42,8 +42,8 @@
           "${modifier}+e" = "layout toggle split";
           "${modifier}+Shift+space" = "floating toggle";
           "${modifier}+space" = "focus mode_toggle";
-          # TODO focus child?
           "${modifier}+a" = "focus parent";
+          "${modifier}+Shift+a" = "focus child";
           "${modifier}+1" = "workspace 1";
           "${modifier}+2" = "workspace 2";
           "${modifier}+3" = "workspace 3";
