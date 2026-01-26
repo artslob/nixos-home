@@ -76,6 +76,10 @@
             ''exec --no-startup-id "dunstctl history-pop"'';
           "${modifier}+bracketright" =
             ''exec --no-startup-id "dunstctl close"'';
+          "${modifier}+Ctrl+Left" = "resize shrink width 10 px or 10 ppt";
+          "${modifier}+Ctrl+Right" = "resize grow width 10 px or 10 ppt";
+          "${modifier}+Ctrl+Up" = "resize grow height 10 px or 10 ppt";
+          "${modifier}+Ctrl+Down" = "resize shrink height 10 px or 10 ppt";
           "${modifier}+r" = "mode resize";
           "XF86AudioMute" =
             ''exec --no-startup-id "amixer sset Master toggle"'';
