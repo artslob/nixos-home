@@ -2,7 +2,7 @@
   # Create settings.local.json with ONLY the hooks configuration
   # This file will be public in the NixOS config
   # Personal settings (permissions, etc.) should be in settings.json (private)
-  home.file.".claude/settings.local.json" = {
+  home.file.".claude/settings.json" = {
     source = pkgs.writeText "claude-settings-local.json" (builtins.toJSON {
       # Audio notification hooks
       hooks = {
