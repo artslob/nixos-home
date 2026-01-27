@@ -1,5 +1,6 @@
 { pkgs, lib, hostConfig, config, ... }: {
-  imports = [ ./alacritty.nix ./git.nix ./i3.nix ./polybar.nix ];
+  imports =
+    [ ./alacritty.nix ./claude-code.nix ./git.nix ./i3.nix ./polybar.nix ];
 
   home.stateVersion = hostConfig.stateVersion;
 
