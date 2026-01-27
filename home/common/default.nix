@@ -1,5 +1,5 @@
 { pkgs, lib, hostConfig, config, ... }: {
-  imports = [ ./alacritty.nix ./git.nix ./i3.nix ./polybar.nix ];
+  imports = [ ./alacritty.nix ./git.nix ./i3.nix ./polybar.nix ./tmux.nix ];
 
   home.stateVersion = hostConfig.stateVersion;
 
@@ -10,6 +10,10 @@
       g = "git";
       l = "ls -l";
       ll = "ls -alh";
+      t = "tmux";
+      ta = "tmux attach -t";
+      tn = "tmux new -s";
+      tl = "tmux list-sessions";
     };
     bashrcExtra = ''
       # fix for nix-shell and starship
