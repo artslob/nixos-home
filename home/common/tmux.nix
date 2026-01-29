@@ -83,6 +83,9 @@
       bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
       bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
 
+      # Clear screen and scrollback history
+      bind k send-keys C-l \; clear-history
+
       # Reload config
       bind r source-file ~/.config/tmux/tmux.conf \; display "Config reloaded!"
     '';
