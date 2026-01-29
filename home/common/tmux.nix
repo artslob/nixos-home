@@ -78,6 +78,17 @@
       bind 8 select-window -t 8
       bind 9 select-window -t 9
 
+      # Quick scrolling without explicit copy mode entry
+      # Page-based scrolling (Shift+PageUp/Down)
+      bind -n S-PageUp copy-mode -e \; send-keys -X page-up
+      bind -T copy-mode-vi S-PageUp send-keys -X page-up
+      bind -T copy-mode-vi S-PageDown send-keys -X page-down
+
+      # Line-based scrolling (Shift+Up/Down)
+      bind -n S-Up copy-mode -e \; send-keys -X scroll-up
+      bind -T copy-mode-vi S-Up send-keys -X scroll-up
+      bind -T copy-mode-vi S-Down send-keys -X scroll-down
+
       # Keybindings - Copy mode (vi-mode)
       bind -T copy-mode-vi v send-keys -X begin-selection
       bind -T copy-mode-vi y send-keys -X copy-selection-and-cancel
