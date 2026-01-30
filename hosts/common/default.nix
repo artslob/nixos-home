@@ -164,6 +164,13 @@
   };
   services.blueman.enable = true;
 
+  # Laptop lid switch behavior
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend"; # Suspend when on battery
+    HandleLidSwitchExternalPower = "ignore"; # Ignore when plugged in
+    HandleLidSwitchDocked = "ignore"; # Ignore when docked
+  };
+
   # Enable numlock on console TTY (before graphical session)
   systemd.services."getty@".serviceConfig.ExecStartPre =
     [ "-${pkgs.kbd}/bin/setleds -D +num" ];
