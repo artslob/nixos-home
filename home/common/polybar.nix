@@ -51,11 +51,10 @@
 
         "modules-left" = "i3 xwindow";
         "modules-right" =
-          "xkeyboard pulseaudio backlight filesystem memory cpu battery wlan eth date";
+          "xkeyboard pulseaudio backlight filesystem memory cpu battery wlan eth date tray";
         "cursor-click" = "pointer";
         "cursor-scroll" = "ns-resize";
         "enable-ipc" = true;
-        "tray-position" = "right";
       };
       "module/i3" = rec {
         type = "internal/i3";
@@ -246,6 +245,10 @@
         "scroll-interval" = 5;
         "format-prefix" = " ";
         "format-prefix-foreground" = colors.primary;
+      };
+      "module/tray" = {
+        type = "internal/tray";
+        "tray-spacing" = 5;
       };
       "settings" = {
         "screenchange-reload" = true;
