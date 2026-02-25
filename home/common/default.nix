@@ -36,6 +36,27 @@
         echo "Created backup branch: $backup_name"
       }
 
+      # Attach to tmux session by index (1-based)
+      # Usage: tai <index>
+      tai() {
+        if [ -z "$1" ]; then
+          echo "Usage: tai <index>" >&2
+          return 1
+        fi
+        local index="$1"
+        local session
+        session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | sed -n "''${index}p")
+        if [ -z "$session" ]; then
+          echo "No session at index $index" >&2
+          return 1
+        fi
+        if [ -n "$TMUX" ]; then
+          tmux switch-client -t "$session"
+        else
+          tmux attach -t "$session"
+        fi
+      }
+
       [ -r ~/.bashrc-extra ] && . ~/.bashrc-extra
     '';
   };
