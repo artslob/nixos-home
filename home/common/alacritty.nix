@@ -2,6 +2,10 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      window = {
+        dynamic_title = true;
+        title = "Alacritty";
+      };
       scrolling.history = 100000;
       keyboard.bindings = [
         {

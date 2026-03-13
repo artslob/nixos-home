@@ -10,6 +10,10 @@
     shell = "${pkgs.bash}/bin/bash";
 
     extraConfig = ''
+      # Terminal title (reflects in Alacritty window)
+      set -g set-titles on
+      set -g set-titles-string "#S"
+
       # Window and pane numbering
       set -g renumber-windows on
       setw -g pane-base-index 1
