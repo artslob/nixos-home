@@ -70,6 +70,8 @@
       "slack"
       "claude-code"
       "cursor-cli"
+      "nvidia-x11"
+      "nvidia-settings"
     ];
 
   environment.systemPackages = with pkgs; [

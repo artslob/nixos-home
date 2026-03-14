@@ -9,6 +9,19 @@
 
   networking.hostName = "loq";
 
+  # NVIDIA configuration for HDMI output
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = false;
+    prime = {
+      amdgpuBusId = "PCI:6:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+      sync.enable = true; # Required for HDMI output
+    };
+  };
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   #console = {
