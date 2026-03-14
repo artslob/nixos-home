@@ -17,8 +17,8 @@
     prime = {
       amdgpuBusId = "PCI:6:0:0";
       nvidiaBusId = "PCI:1:0:0";
-      # Use reverse sync: AMD as primary, but NVIDIA outputs (HDMI) still work
-      reverseSync.enable = true;
+      # Use sync mode: NVIDIA as primary display, AMD outputs also work
+      sync.enable = true;
     };
   };
   services.xserver.videoDrivers = [ "nvidia" ];
