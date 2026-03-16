@@ -49,7 +49,7 @@
 
       set -g message-style "fg=#FFFFFF,bg=#373B41"
 
-      set -g status-left "#[fg=#9ECE6A,bold] #S #[default] "
+      set -g status-left "#{?client_prefix,#[fg=#FACD76#,bold] ⌨ #S ,#[fg=#9ECE6A#,bold] #S }#[default] "
       set -g status-left-length 20
 
       set -g status-right "#[fg=#FACD76]%d %b %H:%M "
