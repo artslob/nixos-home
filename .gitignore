@@ -1,4 +1,5 @@
 /.idea/
+.envrc
 
 # created by `nixos-rebuild build` command
 /result 
