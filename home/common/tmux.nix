@@ -98,6 +98,7 @@
       bind -T copy-mode-vi y send-keys -X copy-selection
       bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection
+      bind -T copy-mode-vi DoubleClick1Pane send-keys -X select-word \; send-keys -X copy-selection-no-clear
 
       # Clear screen and scrollback history
       bind k send-keys C-l \; clear-history
