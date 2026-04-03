@@ -3,17 +3,25 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       hostConfig = {
         asus = { stateVersion = "22.11"; };
         loq = { stateVersion = "24.11"; };
+      };
+      overlay-unstable = final: prev: {
+        unstable = import nixpkgs-unstable {
+          system = prev.system;
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (nixpkgs.lib.getName pkg) [ "claude-code" ];
+        };
       };
     in {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
@@ -21,6 +29,7 @@
         specialArgs = { hostConfig = hostConfig.asus; };
         modules = [
           ./hosts/asus
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -36,6 +45,7 @@
         specialArgs = { hostConfig = hostConfig.loq; };
         modules = [
           ./hosts/loq
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
