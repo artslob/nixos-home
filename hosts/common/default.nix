@@ -129,7 +129,7 @@
     simplescreenrecorder
     obs-studio # screen recorder
     gemini-cli
-    pkgs.unstable.claude-code
+    claude-code # from claude-code-nix overlay
     cursor-cli
     # send files in local network
     # required disabling firewall (networking.firewall.enable = false)

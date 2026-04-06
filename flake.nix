@@ -4,13 +4,16 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Hourly-updated claude-code flake (avoids npm unpublishing issues)
+    claude-code.url = "github:sadjow/claude-code-nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, claude-code, home-manager, ... }@inputs:
     let
       hostConfig = {
         asus = { stateVersion = "22.11"; };
@@ -23,13 +26,16 @@
             builtins.elem (nixpkgs.lib.getName pkg) [ "claude-code" ];
         };
       };
+      overlay-claude-code = claude-code.overlays.default;
     in {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { hostConfig = hostConfig.asus; };
         modules = [
           ./hosts/asus
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          ({ config, pkgs, ... }: {
+            nixpkgs.overlays = [ overlay-unstable overlay-claude-code ];
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -45,7 +51,9 @@
         specialArgs = { hostConfig = hostConfig.loq; };
         modules = [
           ./hosts/loq
-          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          ({ config, pkgs, ... }: {
+            nixpkgs.overlays = [ overlay-unstable overlay-claude-code ];
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
