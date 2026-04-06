@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    claude-code.url = "github:sadjow/claude-code-nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,12 +16,14 @@
         asus = { stateVersion = "22.11"; };
         loq = { stateVersion = "24.11"; };
       };
+      overlay-claude-code = inputs.claude-code.overlays.default;
     in {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { hostConfig = hostConfig.asus; };
         modules = [
           ./hosts/asus
+          ({ ... }: { nixpkgs.overlays = [ overlay-claude-code ]; })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -36,6 +39,7 @@
         specialArgs = { hostConfig = hostConfig.loq; };
         modules = [
           ./hosts/loq
+          ({ ... }: { nixpkgs.overlays = [ overlay-claude-code ]; })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
