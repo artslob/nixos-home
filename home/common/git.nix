@@ -23,6 +23,8 @@
         dc = "diff --cached";
         fe = "fetch";
         l = "log";
+        ll =
+          "log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s' --date=format:'%a %b %d %H:%M:%S %Y %z'";
         lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
         lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
         pl = "pull";
