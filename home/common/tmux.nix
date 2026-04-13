@@ -9,6 +9,17 @@
     historyLimit = 100000;
     shell = "${pkgs.bash}/bin/bash";
 
+    plugins = with pkgs.tmuxPlugins; [
+      resurrect
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '5'
+        '';
+      }
+    ];
+
     extraConfig = ''
       # Terminal title (reflects in Alacritty window)
       set -g set-titles on

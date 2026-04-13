@@ -28,7 +28,7 @@ Tmux (terminal multiplexer) is a powerful tool that allows you to manage multipl
 
 Your tmux configuration provides several key benefits:
 
-- **Persistent Sessions**: Your work survives terminal crashes and SSH disconnections
+- **Persistent Sessions**: Your work survives terminal crashes, SSH disconnections, and reboots (via auto-save/restore)
 - **Better Organization**: Split a single terminal window into multiple panes
 - **Remote Development**: Keep long-running processes alive on remote servers
 - **Context Switching**: Quickly switch between different projects without losing your setup
@@ -243,11 +243,14 @@ All commands start with the prefix: `Ctrl+Space`
 | Create session | - | `tn project-name` |
 | Attach to session | - | `ta project-name` |
 | Kill session | - | `tmux kill-session -t name` |
+| Save session | `Ctrl+Space Ctrl+s` | Save all sessions to disk |
+| Restore session | `Ctrl+Space Ctrl+r` | Restore saved sessions |
 
 **Session Tips**:
 - Always use named sessions (`tn name`) instead of anonymous ones
 - Use project names: `frontend`, `backend`, `monitoring`
-- Sessions persist until you explicitly kill them or reboot
+- Sessions auto-save every 5 minutes and auto-restore on tmux start (via resurrect + continuum plugins)
+- You can also manually save with `Ctrl+Space Ctrl+s` before a reboot
 
 ### Copy Mode
 
@@ -805,8 +808,11 @@ tmux ls
 
 # If no sessions listed, they were killed
 # Common causes:
-# - System reboot (tmux doesn't survive reboots by default)
 # - Accidentally ran 'tmux kill-server'
+
+# Sessions are auto-restored after reboot (via resurrect + continuum)
+# If auto-restore didn't work, manually restore:
+# Ctrl+Space Ctrl+r
 
 # Attach to any session
 tmux attach  # Attaches to last session
@@ -864,6 +870,8 @@ Ctrl+Space d        Detach from session
 Ctrl+Space s        List and switch sessions
 Ctrl+Space D        Choose client to detach
 Ctrl+Space $        Rename session
+Ctrl+Space Ctrl+s   Save all sessions to disk
+Ctrl+Space Ctrl+r   Restore saved sessions
 ```
 
 ### Copy Mode
