@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     claude-code.url = "github:sadjow/claude-code-nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -17,10 +18,17 @@
         loq = { stateVersion = "24.11"; };
       };
       overlay-claude-code = inputs.claude-code.overlays.default;
+      pkgs-unstable = import inputs.nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
     in {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { hostConfig = hostConfig.asus; };
+        specialArgs = {
+          hostConfig = hostConfig.asus;
+          inherit pkgs-unstable;
+        };
         modules = [
           ./hosts/asus
           ({ ... }: { nixpkgs.overlays = [ overlay-claude-code ]; })
@@ -29,14 +37,20 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = { hostConfig = hostConfig.asus; };
+            home-manager.extraSpecialArgs = {
+              hostConfig = hostConfig.asus;
+              inherit pkgs-unstable;
+            };
             home-manager.users.artslob = import ./home/asus.nix;
           }
         ];
       };
       nixosConfigurations.loq = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { hostConfig = hostConfig.loq; };
+        specialArgs = {
+          hostConfig = hostConfig.loq;
+          inherit pkgs-unstable;
+        };
         modules = [
           ./hosts/loq
           ({ ... }: { nixpkgs.overlays = [ overlay-claude-code ]; })
@@ -45,7 +59,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = { hostConfig = hostConfig.loq; };
+            home-manager.extraSpecialArgs = {
+              hostConfig = hostConfig.loq;
+              inherit pkgs-unstable;
+            };
             home-manager.users.artslob = import ./home/loq.nix;
           }
         ];

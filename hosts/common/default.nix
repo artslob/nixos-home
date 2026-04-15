@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, hostConfig, ... }: {
+{ config, pkgs, pkgs-unstable, hostConfig, ... }: {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
@@ -128,9 +128,9 @@
     tree
     simplescreenrecorder
     obs-studio # screen recorder
-    gemini-cli
+    pkgs-unstable.gemini-cli
     claude-code
-    cursor-cli
+    pkgs-unstable.cursor-cli
     # send files in local network
     # required disabling firewall (networking.firewall.enable = false)
     localsend
