@@ -13,7 +13,7 @@
       t = "tmux";
       ta = "tmux attach -t";
       tn = "tmux new -s";
-      tl = "tmux list-sessions";
+      tl = "tmux list-sessions | nl -ba";
     };
     bashrcExtra = ''
       # fix for nix-shell and starship
