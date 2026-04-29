@@ -5,7 +5,7 @@
     keyMode = "vi";
     mouse = true;
     baseIndex = 1;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     historyLimit = 100000;
     shell = "${pkgs.bash}/bin/bash";
 
