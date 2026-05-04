@@ -13,7 +13,7 @@
       t = "tmux";
       ta = "tmux attach -t";
       tn = "tmux new -s";
-      tl = "tmux list-sessions | nl -ba";
+      tl = "tmux list-sessions | sort -V | nl -ba";
     };
     bashrcExtra = ''
       # fix for nix-shell and starship
@@ -45,7 +45,7 @@
         fi
         local index="$1"
         local session
-        session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | sed -n "''${index}p")
+        session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null | sort -V | sed -n "''${index}p")
         if [ -z "$session" ]; then
           echo "No session at index $index" >&2
           return 1
