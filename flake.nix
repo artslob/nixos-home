@@ -5,19 +5,27 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     claude-code.url = "github:sadjow/claude-code-nix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs:
     let
       hostConfig = {
         asus = { stateVersion = "22.11"; };
         loq = { stateVersion = "24.11"; };
       };
       overlay-claude-code = inputs.claude-code.overlays.default;
+      overlay-agenix = final: prev: {
+        agenix-cli = agenix.packages.${final.system}.default;
+      };
       pkgs-unstable = import inputs.nixpkgs-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -31,7 +39,10 @@
         };
         modules = [
           ./hosts/asus
-          ({ ... }: { nixpkgs.overlays = [ overlay-claude-code ]; })
+          agenix.nixosModules.default
+          ({ ... }: {
+            nixpkgs.overlays = [ overlay-claude-code overlay-agenix ];
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -53,7 +64,10 @@
         };
         modules = [
           ./hosts/loq
-          ({ ... }: { nixpkgs.overlays = [ overlay-claude-code ]; })
+          agenix.nixosModules.default
+          ({ ... }: {
+            nixpkgs.overlays = [ overlay-claude-code overlay-agenix ];
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

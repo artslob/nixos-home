@@ -49,12 +49,12 @@
   # pulseaudio.enable = true;
   # hardware.pulseaudio.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account.
+  users.mutableUsers = false;
   users.users.artslob = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
-    initialHashedPassword =
-      "$y$j9T$uylUKYwGtMuGI4HO0QwvW/$EP2GGktreuKC09uvUEMzfTEcqNLJHpbULU7wx8ZZy93";
+    hashedPasswordFile = config.age.secrets.artslob-password-hash.path;
   };
   security.sudo.extraRules = [{
     users = [ "artslob" ];
@@ -63,6 +63,8 @@
       options = [ "NOPASSWD" "SETENV" ];
     }];
   }];
+  age.secrets.artslob-password-hash.file =
+    ../../secrets/artslob-password-hash.age;
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
@@ -79,6 +81,7 @@
     chromium
     git
     age
+    agenix-cli
     gnupg
     htop
     nixfmt-classic
