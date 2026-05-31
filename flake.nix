@@ -25,14 +25,6 @@
       ...
     }@inputs:
     let
-      hostConfig = {
-        asus = {
-          stateVersion = "22.11";
-        };
-        loq = {
-          stateVersion = "24.11";
-        };
-      };
       overlay-claude-code = inputs.claude-code.overlays.default;
       overlay-agenix = final: prev: {
         agenix-cli = agenix.packages.${final.stdenv.hostPlatform.system}.default;
@@ -41,69 +33,60 @@
         system = "x86_64-linux";
         config.allowUnfree = true;
       };
+
+      # Build a NixOS system for one host. Shared scaffolding lives here;
+      # per-host config belongs in ./hosts/<name> and ./home/<name>.nix.
+      #
+      #   name         - host dir under ./hosts and home file ./home/<name>.nix
+      #   stateVersion - NixOS/home-manager state version for this host
+      #   system       - platform double (default x86_64-linux)
+      #   extraModules - host-specific NixOS modules, e.g. modules pulled from
+      #                  other flake inputs that only one host should get
+      mkHost =
+        {
+          name,
+          stateVersion,
+          system ? "x86_64-linux",
+          extraModules ? [ ],
+        }:
+        let
+          hostConfig = { inherit stateVersion; };
+          specialArgs = { inherit hostConfig pkgs-unstable; };
+        in
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            { nixpkgs.hostPlatform = system; }
+            ./hosts/${name}
+            agenix.nixosModules.default
+            {
+              nixpkgs.overlays = [
+                overlay-claude-code
+                overlay-agenix
+              ];
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.artslob = import ./home/${name}.nix;
+            }
+          ]
+          ++ extraModules;
+        };
     in
     {
-      nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          hostConfig = hostConfig.asus;
-          inherit pkgs-unstable;
+      nixosConfigurations = {
+        asus = mkHost {
+          name = "asus";
+          stateVersion = "22.11";
         };
-        modules = [
-          { nixpkgs.hostPlatform = "x86_64-linux"; }
-          ./hosts/asus
-          agenix.nixosModules.default
-          (
-            { ... }:
-            {
-              nixpkgs.overlays = [
-                overlay-claude-code
-                overlay-agenix
-              ];
-            }
-          )
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              hostConfig = hostConfig.asus;
-              inherit pkgs-unstable;
-            };
-            home-manager.users.artslob = import ./home/asus.nix;
-          }
-        ];
-      };
-      nixosConfigurations.loq = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          hostConfig = hostConfig.loq;
-          inherit pkgs-unstable;
+        loq = mkHost {
+          name = "loq";
+          stateVersion = "24.11";
         };
-        modules = [
-          { nixpkgs.hostPlatform = "x86_64-linux"; }
-          ./hosts/loq
-          agenix.nixosModules.default
-          (
-            { ... }:
-            {
-              nixpkgs.overlays = [
-                overlay-claude-code
-                overlay-agenix
-              ];
-            }
-          )
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              hostConfig = hostConfig.loq;
-              inherit pkgs-unstable;
-            };
-            home-manager.users.artslob = import ./home/loq.nix;
-          }
-        ];
       };
     };
 }
