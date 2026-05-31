@@ -84,11 +84,11 @@
     agenix-cli
     gnupg
     htop
-    nixfmt-classic
+    nixfmt
     pre-commit
     openvpn
     wireguard-tools # wg-quick for VPN
-    bitwarden-desktop
+    pkgs-unstable.bitwarden-desktop
     alacritty
     telegram-desktop
     stow
@@ -109,14 +109,13 @@
     moreutils # sponge bash command
     killall
     jq
-    neofetch
+    fastfetch
     docker-compose
     libreoffice
     dunst # notifications
     smplayer # video player
     vlc # video player
     pavucontrol
-    jetbrains.idea-community
     vscodium
     dbeaver-bin
     zoom-us
