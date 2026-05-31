@@ -50,13 +50,16 @@
           extraModules ? [ ],
         }:
         let
-          hostConfig = { inherit stateVersion; };
-          specialArgs = { inherit hostConfig pkgs-unstable; };
+          specialArgs = { inherit pkgs-unstable; };
         in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
           modules = [
-            { nixpkgs.hostPlatform = system; }
+            {
+              nixpkgs.hostPlatform = system;
+              system.stateVersion = stateVersion;
+              home-manager.users.artslob.home.stateVersion = stateVersion;
+            }
             ./hosts/${name}
             agenix.nixosModules.default
             {

@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  hostConfig,
   config,
   ...
 }:
@@ -13,8 +12,6 @@
     ./polybar.nix
     ./tmux.nix
   ];
-
-  home.stateVersion = hostConfig.stateVersion;
 
   programs.bash = {
     enable = true;
