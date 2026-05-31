@@ -25,6 +25,16 @@
       ...
     }@inputs:
     let
+      # Unfree packages permitted on all hosts, shared by stable and unstable.
+      allowUnfreePredicate =
+        pkg:
+        builtins.elem (nixpkgs.lib.getName pkg) [
+          "zoom"
+          "slack"
+          "claude-code"
+          "cursor-cli"
+        ];
+
       overlay-claude-code = inputs.claude-code.overlays.default;
       overlay-agenix = final: prev: {
         agenix-cli = agenix.packages.${final.stdenv.hostPlatform.system}.default;
@@ -33,7 +43,7 @@
       overlay-unstable = final: prev: {
         unstable = import inputs.nixpkgs-unstable {
           inherit (final.stdenv.hostPlatform) system;
-          config.allowUnfree = true;
+          config.allowUnfreePredicate = allowUnfreePredicate;
         };
       };
 
@@ -56,6 +66,7 @@
           modules = [
             {
               nixpkgs.hostPlatform = system;
+              nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
               system.stateVersion = stateVersion;
               home-manager.users.artslob.home.stateVersion = stateVersion;
             }

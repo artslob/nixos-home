@@ -99,15 +99,6 @@
   ];
   age.secrets.artslob-password-hash.file = ../../secrets/artslob-password-hash.age;
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "zoom"
-      "slack"
-      "claude-code"
-      "cursor-cli"
-    ];
-
   environment.systemPackages = with pkgs; [
     vim
     wget
