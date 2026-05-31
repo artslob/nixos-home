@@ -2,10 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports = [ ./hardware-configuration.nix ../common ./memory.nix ./wireguard.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../common
+    ./memory.nix
+    ./wireguard.nix
+  ];
 
   networking.hostName = "loq";
 
@@ -44,4 +54,3 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWGIVgIJ4oTrlQo3C8KfSrX0JmUP31byr8cIYozmX5A"
   ];
 }
-

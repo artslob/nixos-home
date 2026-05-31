@@ -16,22 +16,33 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      agenix,
+      ...
+    }@inputs:
     let
       hostConfig = {
-        asus = { stateVersion = "22.11"; };
-        loq = { stateVersion = "24.11"; };
+        asus = {
+          stateVersion = "22.11";
+        };
+        loq = {
+          stateVersion = "24.11";
+        };
       };
       overlay-claude-code = inputs.claude-code.overlays.default;
       overlay-agenix = final: prev: {
-        agenix-cli =
-          agenix.packages.${final.stdenv.hostPlatform.system}.default;
+        agenix-cli = agenix.packages.${final.stdenv.hostPlatform.system}.default;
       };
       pkgs-unstable = import inputs.nixpkgs-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
       };
-    in {
+    in
+    {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
         specialArgs = {
           hostConfig = hostConfig.asus;
@@ -41,9 +52,15 @@
           { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/asus
           agenix.nixosModules.default
-          ({ ... }: {
-            nixpkgs.overlays = [ overlay-claude-code overlay-agenix ];
-          })
+          (
+            { ... }:
+            {
+              nixpkgs.overlays = [
+                overlay-claude-code
+                overlay-agenix
+              ];
+            }
+          )
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -66,9 +83,15 @@
           { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/loq
           agenix.nixosModules.default
-          ({ ... }: {
-            nixpkgs.overlays = [ overlay-claude-code overlay-agenix ];
-          })
+          (
+            { ... }:
+            {
+              nixpkgs.overlays = [
+                overlay-claude-code
+                overlay-agenix
+              ];
+            }
+          )
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

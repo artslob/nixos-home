@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.alacritty = {
     enable = true;
     settings = {
@@ -14,7 +15,10 @@
           mode = "~Alt";
           command = {
             program = "bash";
-            args = [ "-c" ./clear-focused-tty.sh ];
+            args = [
+              "-c"
+              ./clear-focused-tty.sh
+            ];
           };
         }
         {

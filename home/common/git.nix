@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.git = {
     enable = true;
     settings = {
@@ -23,8 +24,7 @@
         dc = "diff --cached";
         fe = "fetch";
         l = "log";
-        ll =
-          "log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s' --date=format:'%a %b %d %H:%M:%S %Y %z'";
+        ll = "log --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s' --date=format:'%a %b %d %H:%M:%S %Y %z'";
         lol = "log --graph --decorate --pretty=oneline --abbrev-commit";
         lola = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
         pl = "pull";
@@ -35,18 +35,20 @@
         sw = "switch";
       };
     };
-    includes = [{
-      condition = "gitdir:~/onside/";
-      contents = {
-        user = {
-          name = "artem.s";
-          email = "artem.s@onside.io";
-          signingkey = "~/.ssh/onside/id_ed25519.pub";
+    includes = [
+      {
+        condition = "gitdir:~/onside/";
+        contents = {
+          user = {
+            name = "artem.s";
+            email = "artem.s@onside.io";
+            signingkey = "~/.ssh/onside/id_ed25519.pub";
+          };
+          core.sshCommand = "ssh -i ~/.ssh/onside/id_ed25519";
+          gpg.format = "ssh";
+          commit.gpgsign = true;
         };
-        core.sshCommand = "ssh -i ~/.ssh/onside/id_ed25519";
-        gpg.format = "ssh";
-        commit.gpgsign = true;
-      };
-    }];
+      }
+    ];
   };
 }

@@ -12,14 +12,16 @@
 #   cat ~/.ssh/id_ed25519.pub
 
 let
-  user-artslob =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBiAvme/Pup3RUJRZIrQAfUqVH0XGAmr173XHtYeF669";
+  user-artslob = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBiAvme/Pup3RUJRZIrQAfUqVH0XGAmr173XHtYeF669";
 
-  host-loq =
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFE3MyuBdsNvTJuo4MGGKi8OF7liy85o22oBBeGEZkED";
+  host-loq = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFE3MyuBdsNvTJuo4MGGKi8OF7liy85o22oBBeGEZkED";
 
-  allKeys = [ user-artslob host-loq ];
-in {
+  allKeys = [
+    user-artslob
+    host-loq
+  ];
+in
+{
   "secrets/wireguard-private-key.age".publicKeys = allKeys;
   "secrets/artslob-password-hash.age".publicKeys = allKeys;
 }

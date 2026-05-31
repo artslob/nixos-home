@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3;
@@ -21,8 +27,10 @@
       };
       bars = [ ];
       keybindings =
-        let modifier = config.xsession.windowManager.i3.config.modifier;
-        in lib.mkOptionDefault {
+        let
+          modifier = config.xsession.windowManager.i3.config.modifier;
+        in
+        lib.mkOptionDefault {
           "${modifier}+Return" = "exec alacritty";
           "${modifier}+Shift+q" = "kill";
           "${modifier}+d" = "exec rofi -show run";
@@ -66,34 +74,27 @@
           "${modifier}+Shift+0" = "move container to workspace 10";
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+r" = "restart";
-          "${modifier}+Shift+e" = ''
-            exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"'';
+          "${modifier}+Shift+e" =
+            ''exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"'';
           "${modifier}+Tab" = "workspace back_and_forth";
           "${modifier}+Next" = "workspace next_on_output";
           "${modifier}+Prior" = "workspace prev_on_output";
           "${modifier}+l" = "exec i3lock -fe";
-          "${modifier}+bracketleft" =
-            ''exec --no-startup-id "dunstctl history-pop"'';
-          "${modifier}+bracketright" =
-            ''exec --no-startup-id "dunstctl close"'';
+          "${modifier}+bracketleft" = ''exec --no-startup-id "dunstctl history-pop"'';
+          "${modifier}+bracketright" = ''exec --no-startup-id "dunstctl close"'';
           "${modifier}+Ctrl+Left" = "resize shrink width 10 px or 10 ppt";
           "${modifier}+Ctrl+Right" = "resize grow width 10 px or 10 ppt";
           "${modifier}+Ctrl+Up" = "resize grow height 10 px or 10 ppt";
           "${modifier}+Ctrl+Down" = "resize shrink height 10 px or 10 ppt";
           "${modifier}+r" = "mode resize";
-          "XF86AudioMute" =
-            ''exec --no-startup-id "amixer sset Master toggle"'';
-          "${modifier}+F10" =
-            ''exec --no-startup-id "amixer sset Master toggle"'';
-          "XF86AudioLowerVolume" =
-            ''exec --no-startup-id "amixer sset Master 5%-"'';
+          "XF86AudioMute" = ''exec --no-startup-id "amixer sset Master toggle"'';
+          "${modifier}+F10" = ''exec --no-startup-id "amixer sset Master toggle"'';
+          "XF86AudioLowerVolume" = ''exec --no-startup-id "amixer sset Master 5%-"'';
           "${modifier}+F11" = ''exec --no-startup-id "amixer sset Master 5%-"'';
-          "XF86AudioRaiseVolume" =
-            ''exec --no-startup-id "amixer sset Master 5%+"'';
+          "XF86AudioRaiseVolume" = ''exec --no-startup-id "amixer sset Master 5%+"'';
           "${modifier}+F12" = ''exec --no-startup-id "amixer sset Master 5%+"'';
           "XF86MonBrightnessUp" = "exec --no-startup-id brightnessctl set +5%";
-          "XF86MonBrightnessDown" =
-            "exec --no-startup-id brightnessctl set 5%-";
+          "XF86MonBrightnessDown" = "exec --no-startup-id brightnessctl set 5%-";
         };
       modes = {
         resize = {

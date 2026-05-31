@@ -1,5 +1,18 @@
-{ pkgs, lib, hostConfig, config, ... }: {
-  imports = [ ./alacritty.nix ./git.nix ./i3.nix ./polybar.nix ./tmux.nix ];
+{
+  pkgs,
+  lib,
+  hostConfig,
+  config,
+  ...
+}:
+{
+  imports = [
+    ./alacritty.nix
+    ./git.nix
+    ./i3.nix
+    ./polybar.nix
+    ./tmux.nix
+  ];
 
   home.stateVersion = hostConfig.stateVersion;
 

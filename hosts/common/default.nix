@@ -2,8 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, hostConfig, ... }: {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  hostConfig,
+  ...
+}:
+{
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -53,20 +63,31 @@
   users.mutableUsers = false;
   users.users.artslob = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "docker"
+    ];
     hashedPasswordFile = config.age.secrets.artslob-password-hash.path;
   };
-  security.sudo.extraRules = [{
-    users = [ "artslob" ];
-    commands = [{
-      command = "ALL";
-      options = [ "NOPASSWD" "SETENV" ];
-    }];
-  }];
-  age.secrets.artslob-password-hash.file =
-    ../../secrets/artslob-password-hash.age;
+  security.sudo.extraRules = [
+    {
+      users = [ "artslob" ];
+      commands = [
+        {
+          command = "ALL";
+          options = [
+            "NOPASSWD"
+            "SETENV"
+          ];
+        }
+      ];
+    }
+  ];
+  age.secrets.artslob-password-hash.file = ../../secrets/artslob-password-hash.age;
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "zoom"
       "slack"
@@ -85,6 +106,7 @@
     gnupg
     htop
     nixfmt
+    nixfmt-tree
     pre-commit
     openvpn
     wireguard-tools # wg-quick for VPN
@@ -174,8 +196,7 @@
   };
 
   # Enable numlock on console TTY (before graphical session)
-  systemd.services."getty@".serviceConfig.ExecStartPre =
-    [ "-${pkgs.kbd}/bin/setleds -D +num" ];
+  systemd.services."getty@".serviceConfig.ExecStartPre = [ "-${pkgs.kbd}/bin/setleds -D +num" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

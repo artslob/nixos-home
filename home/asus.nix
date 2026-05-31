@@ -1,1 +1,4 @@
-{ config, pkgs, ... }: { imports = [ ./common ]; }
+{ config, pkgs, ... }:
+{
+  imports = [ ./common ];
+}
