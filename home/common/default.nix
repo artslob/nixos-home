@@ -114,6 +114,9 @@
 
   services.blueman-applet.enable = true;
 
+  # CopyQ clipboard manager (history browsing). Opened via Mod4+c, see i3.nix.
+  services.copyq.enable = true;
+
   # to list all .desktop entries:
   # for p in ${XDG_DATA_DIRS//:/ }; do find $p/applications -name '*.desktop' ; done
   xdg.mimeApps = {

@@ -80,6 +80,7 @@
           "${modifier}+Next" = "workspace next_on_output";
           "${modifier}+Prior" = "workspace prev_on_output";
           "${modifier}+l" = "exec i3lock -fe";
+          "${modifier}+c" = "exec --no-startup-id copyq toggle";
           "${modifier}+bracketleft" = ''exec --no-startup-id "dunstctl history-pop"'';
           "${modifier}+bracketright" = ''exec --no-startup-id "dunstctl close"'';
           "${modifier}+Ctrl+Left" = "resize shrink width 10 px or 10 ppt";
