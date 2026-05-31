@@ -15,6 +15,21 @@
     "flakes"
   ];
 
+  # Automatically collect garbage weekly, removing generations older than 3 months.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 90d";
+    persistent = true; # run on next boot if the machine was off at the scheduled time
+  };
+
+  # Deduplicate the store: hard-link identical files on every build, plus a weekly sweep.
+  nix.settings.auto-optimise-store = true;
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
