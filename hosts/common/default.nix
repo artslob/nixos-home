@@ -5,7 +5,6 @@
 {
   config,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 {
@@ -124,7 +123,7 @@
     pre-commit
     openvpn
     wireguard-tools # wg-quick for VPN
-    pkgs-unstable.bitwarden-desktop
+    unstable.bitwarden-desktop
     alacritty
     telegram-desktop
     stow
@@ -166,9 +165,9 @@
     tree
     simplescreenrecorder
     obs-studio # screen recorder
-    pkgs-unstable.gemini-cli
+    unstable.gemini-cli
     claude-code
-    pkgs-unstable.cursor-cli
+    unstable.cursor-cli
     # send files in local network
     # required disabling firewall (networking.firewall.enable = false)
     localsend

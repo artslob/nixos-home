@@ -29,9 +29,12 @@
       overlay-agenix = final: prev: {
         agenix-cli = agenix.packages.${final.stdenv.hostPlatform.system}.default;
       };
-      pkgs-unstable = import inputs.nixpkgs-unstable {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
+      # Expose nixpkgs-unstable as `pkgs.unstable.<name>`.
+      overlay-unstable = final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (final.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        };
       };
 
       # Build a NixOS system for one host. Shared scaffolding lives here;
@@ -49,11 +52,7 @@
           system ? "x86_64-linux",
           extraModules ? [ ],
         }:
-        let
-          specialArgs = { inherit pkgs-unstable; };
-        in
         nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
           modules = [
             {
               nixpkgs.hostPlatform = system;
@@ -66,6 +65,7 @@
               nixpkgs.overlays = [
                 overlay-claude-code
                 overlay-agenix
+                overlay-unstable
               ];
             }
             home-manager.nixosModules.home-manager
@@ -73,7 +73,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.extraSpecialArgs = specialArgs;
               home-manager.users.artslob = import ./home/${name}.nix;
             }
           ]
