@@ -24,7 +24,8 @@
       };
       overlay-claude-code = inputs.claude-code.overlays.default;
       overlay-agenix = final: prev: {
-        agenix-cli = agenix.packages.${final.system}.default;
+        agenix-cli =
+          agenix.packages.${final.stdenv.hostPlatform.system}.default;
       };
       pkgs-unstable = import inputs.nixpkgs-unstable {
         system = "x86_64-linux";
@@ -32,12 +33,12 @@
       };
     in {
       nixosConfigurations.asus = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = {
           hostConfig = hostConfig.asus;
           inherit pkgs-unstable;
         };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/asus
           agenix.nixosModules.default
           ({ ... }: {
@@ -57,12 +58,12 @@
         ];
       };
       nixosConfigurations.loq = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         specialArgs = {
           hostConfig = hostConfig.loq;
           inherit pkgs-unstable;
         };
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./hosts/loq
           agenix.nixosModules.default
           ({ ... }: {
