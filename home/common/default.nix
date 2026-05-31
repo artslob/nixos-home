@@ -74,7 +74,7 @@
     '';
   };
 
-  home.sessionPath = [ "~/.cargo/bin/" ];
+  home.sessionPath = [ "${config.home.homeDirectory}/.cargo/bin" ];
 
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
