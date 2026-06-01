@@ -73,6 +73,8 @@
   services.libinput.enable = true;
 
   # Enable sound via PipeWire (with ALSA and PulseAudio compatibility).
+  # rtkit lets PipeWire's audio threads acquire realtime scheduling priority.
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
