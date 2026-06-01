@@ -14,10 +14,12 @@
 let
   user-artslob = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBiAvme/Pup3RUJRZIrQAfUqVH0XGAmr173XHtYeF669";
 
+  host-asus = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBNx5a3WMd3VVY42Gtz2rUvb+8WK8yZjsk5O3q4TqRmD";
   host-loq = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFE3MyuBdsNvTJuo4MGGKi8OF7liy85o22oBBeGEZkED";
 
   allKeys = [
     user-artslob
+    host-asus
     host-loq
   ];
 in

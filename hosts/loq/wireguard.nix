@@ -21,4 +21,11 @@
       }
     ];
   };
+
+  # Expose SSH (configured in ../common) only over the WireGuard interface.
+  networking.firewall.interfaces.wg0.allowedTCPPorts = [ 22 ];
+
+  users.users.artslob.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWGIVgIJ4oTrlQo3C8KfSrX0JmUP31byr8cIYozmX5A"
+  ];
 }

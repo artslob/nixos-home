@@ -176,6 +176,20 @@
 
   programs.ssh.startAgent = true;
 
+  # sshd runs on every host so NixOS generates/persists the host key in
+  # /etc/ssh, which agenix uses as its decryption identity (age.identityPaths).
+  # The daemon is hardened and not exposed: openFirewall is off, so a host only
+  # accepts SSH if it explicitly opens port 22 (see loq's wg0 rule).
+  services.openssh = {
+    enable = true;
+    openFirewall = false;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
+
   programs.firefox.enable = true;
 
   fonts.packages = with pkgs; [
