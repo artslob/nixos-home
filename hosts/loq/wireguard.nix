@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   age.secrets.wireguard-private-key.file = ../../secrets/wireguard-private-key.age;
 

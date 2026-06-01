@@ -1,10 +1,5 @@
 # Memory and swap tuning for 64GB RAM
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ ... }:
 
 {
   # Optimize kernel memory management for large RAM
