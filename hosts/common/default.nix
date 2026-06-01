@@ -72,11 +72,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  # Enable sound.
-  # Conflicting with pipewire
-  # sound.enable = true;
-  # pulseaudio.enable = true;
-  # hardware.pulseaudio.enable = true;
+  # Enable sound via PipeWire (with ALSA and PulseAudio compatibility).
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
 
   # Define a user account.
   users.mutableUsers = false;
