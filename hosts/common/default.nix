@@ -158,9 +158,6 @@
     unstable.gemini-cli
     claude-code
     unstable.cursor-cli
-    # send files in local network
-    # required disabling firewall (networking.firewall.enable = false)
-    localsend
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
@@ -191,6 +188,10 @@
   };
 
   programs.firefox.enable = true;
+
+  # Send files in local network.
+  # The module opens TCP/UDP 53317 (openFirewall defaults to true).
+  programs.localsend.enable = true;
 
   fonts.packages = with pkgs; [
     # terminal
