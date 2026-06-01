@@ -41,6 +41,8 @@
 
   time.timeZone = "Asia/Tel_Aviv";
 
+  i18n.defaultLocale = "en_US.UTF-8";
+
   services.xserver = {
     enable = true;
     desktopManager.xterm.enable = false;
