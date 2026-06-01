@@ -29,8 +29,12 @@
   };
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    # Limit generations as boot entries so the small EFI partition doesn't fill up.
+    systemd-boot.configurationLimit = 30;
+    efi.canTouchEfiVariables = true;
+  };
 
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
