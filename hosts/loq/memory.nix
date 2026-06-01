@@ -4,9 +4,12 @@
 {
   # Optimize kernel memory management for large RAM
   boot.kernel.sysctl = {
-    # Only use swap when RAM is critically low (>99% full)
+    # Don't swap anonymous pages until the kernel is genuinely out of options:
+    # 0 means it won't start swapping until free + file-backed pages drop below
+    # a zone's high watermark, i.e. only under real memory pressure. Swap still
+    # acts as an OOM safety net; it just isn't touched in normal operation.
     # Default: 60 (too aggressive), Range: 0-200
-    "vm.swappiness" = 1;
+    "vm.swappiness" = 0;
 
     # Prefer keeping filesystem metadata in cache
     # Default: 100, Lower = keep more in cache
