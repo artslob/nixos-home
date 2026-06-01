@@ -36,8 +36,6 @@
     pulse.enable = true;
   };
 
-  programs.firefox.enable = true;
-
   services.openssh = {
     enable = true;
     settings = {

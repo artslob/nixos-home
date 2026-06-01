@@ -102,7 +102,6 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    firefox
     chromium
     git
     age
@@ -176,6 +175,8 @@
   programs.dconf.enable = true;
 
   programs.ssh.startAgent = true;
+
+  programs.firefox.enable = true;
 
   fonts.packages = with pkgs; [
     # terminal
