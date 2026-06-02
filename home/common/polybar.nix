@@ -101,7 +101,7 @@
         };
         "module/xwindow" = {
           type = "internal/xwindow";
-          "label-maxlen" = 80;
+          "label-maxlen" = 70;
         };
         "module/filesystem" = rec {
           type = "internal/fs";
