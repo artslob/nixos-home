@@ -227,6 +227,11 @@
   # Enable numlock on console TTY (before graphical session)
   systemd.services."getty@".serviceConfig.ExecStartPre = [ "-${pkgs.kbd}/bin/setleds -D +num" ];
 
+  services.v2raya = {
+    enable = true;
+    cliPackage = pkgs.xray; # Recommended for better protocol support (like VLESS/Reality)
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
