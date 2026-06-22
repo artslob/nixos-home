@@ -160,6 +160,7 @@
     unar
     libheif # heif-convert command
     imagemagick # convert command
+    fd
     bat
     tree
     simplescreenrecorder
