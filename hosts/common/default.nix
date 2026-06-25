@@ -163,6 +163,7 @@
     fd
     bat
     tree
+    ripgrep
     simplescreenrecorder
     obs-studio # screen recorder
     unstable.gemini-cli
