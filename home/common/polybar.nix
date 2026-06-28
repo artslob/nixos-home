@@ -232,7 +232,7 @@
         "module/date" = {
           type = "internal/date";
           interval = 1;
-          date = "%d %b, %A";
+          date = "%d %b %A";
           "date-alt" = "%d-%m-%Y";
           time = "%H:%M";
           "time-alt" = "%H:%M";
