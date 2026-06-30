@@ -25,9 +25,6 @@
       tl = "tmux list-sessions | sort -V | nl -ba";
     };
     bashrcExtra = ''
-      # fix for nix-shell and starship
-      export STARSHIP_PREEXEC_READY=true;
-
       # Create backup of current git branch with incremental suffix
       gbak() {
         local current_branch
