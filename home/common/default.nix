@@ -103,6 +103,26 @@
     nix-direnv.enable = true;
   };
 
+  # Modern shell history search (replaces Ctrl+R with an interactive search).
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = true;
+    daemon.enable = true;
+    settings = {
+      enter_accept = true;
+      filter_mode_shell_up_key_binding = "directory";
+      # Ctrl+A is atuin's prefix key by default (a two-step chord), which
+      # shadows the classic "jump to start of line". Restore Ctrl+A to
+      # cursor-start and move the prefix to Ctrl+X.
+      #
+      # NOTE: once any [keymap.*] setting exists, atuin ignores the entire [keys] section.
+      keymap.emacs = {
+        "ctrl-a" = "cursor-start";
+        "ctrl-x" = "enter-prefix-mode";
+      };
+    };
+  };
+
   services.dunst.enable = true;
 
   services.blueman-applet.enable = true;
