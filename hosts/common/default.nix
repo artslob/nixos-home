@@ -164,6 +164,7 @@
     bat
     tree
     ripgrep
+    yt-dlp
     simplescreenrecorder
     obs-studio # screen recorder
     unstable.gemini-cli
