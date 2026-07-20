@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    claude-code.url = "github:sadjow/claude-code-nix";
+    claude-code.url = "github:sadjow/claude-code-nix?ref=v2.1.215";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
