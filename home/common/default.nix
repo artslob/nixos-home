@@ -30,6 +30,15 @@
         local current_branch
         current_branch=$(git rev-parse --abbrev-ref HEAD) || return 1
 
+        # Don't create a duplicate: if a backup of this branch already points
+        # at the current commit, report it and stop.
+        local existing
+        existing=$(git for-each-ref --points-at HEAD --format='%(refname:short)' "refs/heads/''${current_branch}.backup-*" | head -n1)
+        if [ -n "$existing" ]; then
+          echo "Backup already exists at current commit: $existing"
+          return 0
+        fi
+
         local counter=1
         local backup_name="''${current_branch}.backup-''${counter}"
 
