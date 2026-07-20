@@ -113,6 +113,7 @@
     wget
     chromium
     git
+    gh
     age
     agenix-cli
     gnupg
