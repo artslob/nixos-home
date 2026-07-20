@@ -116,6 +116,7 @@
     age
     agenix-cli
     gnupg
+    btop
     htop
     nixfmt
     nixfmt-tree
