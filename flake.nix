@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     claude-code.url = "github:sadjow/claude-code-nix?ref=v2.1.215";
     agenix = {
       url = "github:ryantm/agenix";
@@ -22,6 +23,7 @@
       nixpkgs,
       home-manager,
       agenix,
+      flake-utils,
       ...
     }@inputs:
     let
@@ -101,5 +103,26 @@
           stateVersion = "24.11";
         };
       };
-    };
+    }
+    // flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShellNoCC {
+          packages = [
+            pkgs.nixfmt-tree # provides the `treefmt` binary the pre-commit hook calls
+            pkgs.nixfmt # standalone Nix formatter
+            pkgs.pre-commit
+            agenix.packages.${system}.default # edit/rekey secrets
+          ]
+          # nixos-rebuild is Linux-only; eachDefaultSystem also emits *-darwin
+          # shells, so guard it or those shells fail to evaluate.
+          ++ pkgs.lib.optional pkgs.stdenv.isLinux pkgs.nixos-rebuild;
+
+          EDITOR = "vim"; # agenix launches $EDITOR to edit secrets
+        };
+      }
+    );
 }
