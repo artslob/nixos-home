@@ -1,5 +1,7 @@
 /.idea/
 .envrc
+.direnv
+*.swp
 
 # created by `nixos-rebuild build` command
 /result 
