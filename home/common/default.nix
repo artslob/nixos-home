@@ -95,6 +95,10 @@
     alsa-utils
   ];
 
+  # System-wide default editor for interactive tools (git falls back to this
+  # too, though git.nix also sets core.editor explicitly).
+  home.sessionVariables.EDITOR = "vim";
+
   programs.starship = {
     enable = true;
     settings = {
