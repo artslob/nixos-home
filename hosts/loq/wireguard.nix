@@ -27,5 +27,6 @@
 
   users.users.artslob.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILWGIVgIJ4oTrlQo3C8KfSrX0JmUP31byr8cIYozmX5A"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMKfn6l7/F8vGBD5BbAzs6CLkpz/9kJA8NAfmbrlnG6E"
   ];
 }
