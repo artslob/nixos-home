@@ -114,6 +114,7 @@
     chromium
     git
     gh
+    jira-cli-go
     age
     agenix-cli
     gnupg
