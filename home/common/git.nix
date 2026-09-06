@@ -14,6 +14,7 @@
       user.signingkey = "~/.ssh/id_ed25519.pub";
       gpg.format = "ssh";
       commit.gpgsign = true;
+      rerere.enabled = true;
       alias = {
         a = "add";
         au = "add -u";
