@@ -22,7 +22,7 @@
       t = "tmux";
       ta = "tmux attach -t";
       tn = "tmux new -s";
-      tl = "tmux list-sessions | sort -V | nl -ba";
+      tl = "tmux list-sessions | sort -V -t: -k1,1 | nl -ba";
     };
     bashrcExtra = ''
       # Create backup of current git branch with incremental suffix
@@ -70,6 +70,20 @@
         else
           tmux attach -t "$session"
         fi
+      }
+
+      # Filter tl output by session name, keeping tl's numbering (for use with tai)
+      # Usage: tlg <pattern>   (case-insensitive extended regex, e.g. tlg 'vat|ledger')
+      tlg() {
+        if [ -z "$1" ]; then
+          echo "Usage: tlg <pattern>" >&2
+          return 1
+        fi
+        tmux list-sessions 2>/dev/null | sort -V -t: -k1,1 | nl -ba \
+          | pattern="$1" awk -F'\t' '
+              { name = $2; sub(/:.*/, "", name) }
+              tolower(name) ~ tolower(ENVIRON["pattern"]) { print; found = 1 }
+              END { exit !found }'
       }
 
       [ -r ~/.bashrc-extra ] && . ~/.bashrc-extra

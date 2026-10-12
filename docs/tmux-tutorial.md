@@ -614,6 +614,8 @@ t                           # Start anonymous session
 tn <name>                   # Start named session
 ta <name>                   # Attach to session
 tl                          # List sessions
+tai <index>                 # Attach to session by its tl number
+tlg <pattern>               # Filter tl by session name (regex, e.g. 'vat|ledger')
 tmux kill-session -t <name> # Kill session
 tmux kill-server            # Kill all sessions
 
@@ -892,14 +894,6 @@ Ctrl+Space r        Reload configuration
 Ctrl+Space :        Command prompt
 Ctrl+Space ?        List all keybindings
 Ctrl+Space t        Show clock
-```
-
-### Shell Commands
-```
-t                   Start tmux
-tn <name>           Start named session
-ta <name>           Attach to session
-tl                  List sessions
 ```
 
 ### Cheat Sheet for i3 Users
