@@ -170,9 +170,10 @@
     yt-dlp
     simplescreenrecorder
     obs-studio # screen recorder
-    unstable.gemini-cli
     claude-code
     unstable.cursor-cli
+    unstable.antigravity-cli
+    unstable.codex
   ];
 
   # keyring keeps passwords, e.g. for nm-applet

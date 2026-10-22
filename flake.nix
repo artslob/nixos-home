@@ -34,6 +34,7 @@
           "slack"
           "claude-code"
           "cursor-cli"
+          "antigravity-cli"
         ];
 
       overlay-claude-code = inputs.claude-code.overlays.default;
