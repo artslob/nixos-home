@@ -149,6 +149,7 @@
     fastfetch
     docker-compose
     libreoffice
+    anki # flashcards
     dunst # notifications
     smplayer # video player
     vlc # video player
