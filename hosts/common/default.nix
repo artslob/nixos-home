@@ -175,6 +175,7 @@
     unstable.cursor-cli
     unstable.antigravity-cli
     unstable.codex
+    unstable.rtk # CLI proxy that trims LLM token usage
   ];
 
   # keyring keeps passwords, e.g. for nm-applet
