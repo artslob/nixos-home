@@ -48,4 +48,11 @@ in
   # resurrect evals hooks inside restore.sh, so its last_resurrect_file and
   # RESTORING_FROM_SCRATCH are available here
   set -g @resurrect-hook-post-restore-all '${restoreDirs} "$(last_resurrect_file)" "$RESTORING_FROM_SCRATCH"'
+
+  # prefix P: set session working dir (used by new windows) to current pane's
+  # path. Via setDir rather than a plain attach-session -c, which would set the
+  # client's last session to the current one and break prefix L. #{q:} escapes
+  # the values for the shell; run-shell without -b blocks, so display shows the
+  # new dir.
+  bind P run-shell '${setDir} #{q:session_name} #{q:pane_current_path}' \; display "Session dir: #{session_path}"
 ''
