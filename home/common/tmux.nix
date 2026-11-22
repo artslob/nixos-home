@@ -71,6 +71,9 @@
       bind h split-window -h -c "#{pane_current_path}"
       bind v split-window -v -c "#{pane_current_path}"
 
+      # Keybindings - Set session working dir (used by new windows) to current pane's path
+      bind P attach-session -c "#{pane_current_path}" \; display "Session dir: #{session_path}"
+
       # Keybindings - Navigation (arrow keys like i3)
       bind Left select-pane -L
       bind Down select-pane -D
