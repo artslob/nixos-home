@@ -64,8 +64,11 @@
       set -g status-left "#{?client_prefix,#[fg=#FACD76#,bold] ⌨ #S ,#[fg=#9ECE6A#,bold] #S }#[default] "
       set -g status-left-length 20
 
-      set -g status-right "#[fg=#FACD76]%d %b %H:%M "
-      set -g status-right-length 50
+      # status-right is left at the tmux default on purpose: continuum's
+      # auto-save works by prepending a hook to status-right when its plugin
+      # loads, and this extraConfig is emitted *after* plugins, so setting
+      # status-right here would wipe the hook. To customize it, set it in the
+      # continuum plugin's extraConfig above instead.
 
       # Keybindings - Splits (preserve current path, matching i3 h/v pattern)
       bind h split-window -h -c "#{pane_current_path}"
