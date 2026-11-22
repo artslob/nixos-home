@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  sessionDirs = import ./tmux-session-dirs.nix { inherit pkgs; };
+in
 {
   programs.tmux = {
     enable = true;
@@ -15,7 +18,8 @@
         plugin = resurrect;
         extraConfig = ''
           set -g @resurrect-capture-pane-contents 'on'
-        '';
+        ''
+        + sessionDirs;
       }
       {
         plugin = continuum;
