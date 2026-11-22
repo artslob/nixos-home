@@ -11,7 +11,12 @@
     shell = "${pkgs.bash}/bin/bash";
 
     plugins = with pkgs.tmuxPlugins; [
-      resurrect
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
       {
         plugin = continuum;
         extraConfig = ''
