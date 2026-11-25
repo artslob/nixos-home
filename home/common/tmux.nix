@@ -15,7 +15,19 @@ in
 
     plugins = with pkgs.tmuxPlugins; [
       {
-        plugin = resurrect;
+        # resurrect re-reads each saved pane line with `IFS=$'\t' read`. Tab is
+        # IFS whitespace, so an empty pane title (Claude Code clears it on
+        # exit) collapses its field and shifts the rest left: the pane's dir is
+        # saved as "1" and the pane restores in $HOME. Save the hostname
+        # (tmux's default pane title) instead of an empty title. Upstream:
+        # tmux-plugins/tmux-resurrect#602; open PR #564 does the same.
+        plugin = resurrect.overrideAttrs (old: {
+          postPatch = (old.postPatch or "") + ''
+            substituteInPlace scripts/save.sh --replace-fail \
+              'format+="#{pane_title}"' \
+              'format+="#{?pane_title,#{pane_title},#{host}}"'
+          '';
+        });
         extraConfig = ''
           set -g @resurrect-capture-pane-contents 'on'
         ''
